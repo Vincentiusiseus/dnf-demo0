@@ -106,6 +106,16 @@ class Main {
 
             if(this.stop_flag) break;
 
+            const end_dt = new Date()
+            const time_took_ms = end_dt.getTime() - start_dt.getTime()
+            const time_took_s = time_took_ms / 1000
+            /**
+             * 2022-01-02 08:37
+             * 테스트 해봤을때 100페이지 넘어갈때까지 올라가다가 4 페이지/s 안넘어감
+             */
+            const pages_per_s = this.page / time_took_s
+            console.log(`Pages per second: ${pages_per_s}`)
+
             this.page++
         } 
         console.log(`Done`)
@@ -113,7 +123,8 @@ class Main {
         // fs.writeFileSync("./data/html_content.html", html_content)
 
         const end_dt = new Date()
-        console.log(`Took ${end_dt.getTime() - start_dt.getTime()}ms`)
+        const time_took_ms = end_dt.getTime() - start_dt.getTime()
+        console.log(`Took ${time_took_ms}ms`)
     }
 }
 
