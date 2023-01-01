@@ -1,0 +1,9 @@
+# NPM
+node_modules
+package-lock.json
+
+# Secret & big files
+cred/*
+!cred/.gitkeep
+data/*
+!data/.gitkeep
