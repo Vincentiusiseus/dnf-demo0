@@ -13,7 +13,7 @@ import { loadPageJsdom } from "./load-page"
 function scrapePostData(jsdom:JSDOM) {
     const document = jsdom.window.document
     /**
-     * 2022-01-02 10:03
+     * 2023-01-02 10:03
      * JSDOM에서는 `:has(th)` pseudo class 지원 안하는듯
      */
     const post_row_elements = document.querySelectorAll("table.tbl tr:not(.ntc)")
@@ -59,15 +59,6 @@ class Main {
         this.stop_flag = false
     }
 
-    async loadPage() {
-        const url = new URL("", Main.BASE_URL)
-        url.searchParams.append("page", "" + this.page)
-        // @ts-ignore
-        const response = await axios.get(url.href, { responseType: "arraybuffer" })
-        const html_content = response.data
-        return html_content
-    }
-
     async start() {
         const start_dt = new Date()
 
@@ -75,30 +66,6 @@ class Main {
         await client.connect()
         this.db = client.db("dnf-data")
 
-        while(true) {
-            // console.log(`Load page ${this.page}`)
-            // await this.loadPage()
-            // // const output = await this.scrapePosts()
-            // if(output != null && output.length > 0) {
-            //     console.log(`Insert ${output.length} entries.`)
-            //     await this.db.collection("forum-users").insertMany(output)
-            // }
-            // console.log(`Done for page ${this.page}. Took ${new Date().getTime() - start_dt.getTime()}ms so far.`)
-
-            // if(this.stop_flag) break;
-
-            // const end_dt = new Date()
-            // const time_took_ms = end_dt.getTime() - start_dt.getTime()
-            // const time_took_s = time_took_ms / 1000
-            // /**
-            //  * 2022-01-02 08:37
-            //  * 테스트 해봤을때 100페이지 넘어갈때까지 올라가다가 4 페이지/s 안넘어감
-            //  */
-            // const pages_per_s = this.page / time_took_s
-            // console.log(`Pages per second: ${pages_per_s}`)
-
-            // this.page++
-        } 
         console.log(`Done`)
         await client.close()
         // fs.writeFileSync("./data/html_content.html", html_content)
@@ -109,9 +76,12 @@ class Main {
     }
 }
 
+/**
+ * 2023-01-02 10:14
+ * 던파게시판 전체 페이지 34000 정도. 4페이지/초면 8500초 = 141.67분 = 2시간
+ * 목표: 4페이지/초 높이기
+ */
 async function main() {
-    // await new Main().start()
-    const jsdom = await loadPageJsdom(1)
-    console.log(scrapePostData(jsdom))
+
 }
 main()
