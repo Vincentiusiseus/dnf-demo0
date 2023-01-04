@@ -54,6 +54,12 @@ class DnfApi {
         const response = await axios.get(url.href)
         return response.data
     }
+
+    async getDfJobs() {
+        const url = this._makeUrl(`./jobs/`)
+        const response = await axios.get(url.href)
+        return response.data
+    }
 }
 
 async function main() {
@@ -61,13 +67,14 @@ async function main() {
     const inst = new DnfApi(api_key)
     let data:any = null
     try {
-        data = await inst.getCharacter("all", "이창에흑염룡")
+        // data = await inst.getCharacter("all", "이창에흑염룡")
+        data = await inst.getDfJobs()
     }
     catch(e) {
         console.log(e.response.data)
         console.log(e.response)
         // throw e
     }
-    console.log(data)
+    console.dir(data, { depth: 10 })
 }
 main()
