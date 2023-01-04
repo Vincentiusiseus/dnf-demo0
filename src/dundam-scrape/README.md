@@ -5,6 +5,7 @@ https://dundam.xyz/
 https://dundam.xyz/damage_ranking?page=1&type=7&job={각성이름}&baseJob={직업이름}&weaponType=전체&weaponDetail=전체
 
 직업이름 = {직업이름} + "(" + {성별} + ")"
+  - 외전 캐릭터(다크나이트, 크리에이터)는 직업이름이 "외전"
 
 각성이름 = "眞 " + {직업이름}
 
