@@ -17,7 +17,7 @@ const axios = _axios.create({
     })
 })
 
-class DnfApi {
+export class DnfApi {
     api_key:string
 
     static BASE_URL = `https://api.neople.co.kr/df/`
