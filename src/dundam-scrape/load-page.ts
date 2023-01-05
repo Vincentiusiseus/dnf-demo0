@@ -37,7 +37,7 @@ async function main() {
     rows.forEach(el => console.log(el.outerHTML))
 }
 
-async function requestData(page:number, base_job:string, job:string) {
+export async function requestDealerData(page:number, base_job:string, job:string) {
     const BASE_URL = `https://dundam.xyz/dat/dealerRankingData.jsp?type=7&weaponType=전체&weaponDetail=전체`
     const url = new URL("", BASE_URL)
     url.searchParams.append("page", "" + page)
@@ -49,8 +49,18 @@ async function requestData(page:number, base_job:string, job:string) {
     return res_data 
 }
 
-async function main1() {
-    const data = await requestData(1, "귀검사(여)", "眞 소드마스터")
-    console.log(data)
+export async function requestBufferData(page:number, job_index:number) {
+    const BASE_URL = `https://dundam.xyz/dat/bufferRankingData.jsp?type=1&favor=2`
+    const url = new URL("", BASE_URL)
+    url.searchParams.append("page", "" + page)
+    url.searchParams.append("job", "" + job_index)
+
+    const response = await axios.post(url.href)
+    const res_data = response.data
+    return res_data 
 }
-main1()
+
+async function main1() {
+    const data = await requestDealerData(447, "프리스트(남)", "眞 퇴마사")
+}
+// main1()

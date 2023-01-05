@@ -1,36 +1,46 @@
 // Node libs
 import * as fs from "fs"
 
-class Generator {
+export class Generator {
     jobs_data:any = null
     page:number = 1
-    had_empty_page = false
+    force_next = false
+    debug_skip_flag = true
     
-    constructor() {
+    constructor(public page_max:number) {
         const jobs_text = fs.readFileSync("./data/df-jobs-modified.json", "utf-8")
         this.jobs_data = JSON.parse(jobs_text)
     }
 
-    hadEmptyPage() {
-        this.had_empty_page = true
+    forceNext() {
+        this.force_next = true
     }
-    
+
     * gen() {
         const char_names = Object.keys(this.jobs_data)
         for(const char_name of char_names) {
             const advs = this.jobs_data[char_name]
             const adv_names = Object.keys(advs)
             for(const adv_name of adv_names) {
+                if(this.debug_skip_flag) {
+                    if(adv_name == "섀도우댄서") {
+                        this.debug_skip_flag = false
+                    }
+                    else {
+                        continue
+                    }
+                }
+
                 const awks = advs[adv_name]
                 // console.log(output)
-                while(this.had_empty_page == false) {
+                while(this.page <= this.page_max && this.force_next == false) {
                     const output = [char_name, adv_name, awks, this.page]
                     yield output
                     this.page++
                 }
 
                 this.page = 1
-                this.had_empty_page = false 
+                this.force_next = false
             }
         }
     }
@@ -49,20 +59,18 @@ function paramGenerator() {
 }
 
 function main() {
-    const inst = new Generator()
+    const inst = new Generator(1)
     const generator = inst.gen()
-    console.log(generator.next())
-    console.log(generator.next())
-    inst.hadEmptyPage()
-    console.log(generator.next())
+    // console.log(generator.next())
+    // console.log(generator.next())
+    // console.log(generator.next())
 
-    console.log("Before while")
+    // console.log("Before while")
     let value:any
     while((value = generator.next()).done == false) {
         console.log(value)
-        console.log(generator.next())
-        console.log(generator.next())
-        inst.hadEmptyPage()
+        // console.log(generator.next())
+        // console.log(generator.next())
     }
 }
-main()
+// main()
