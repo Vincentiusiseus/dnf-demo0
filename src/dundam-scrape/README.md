@@ -2,7 +2,10 @@ https://dundam.xyz/
 
 딜러 URL
 
-https://dundam.xyz/damage_ranking?page=1&type=7&job={각성이름}&baseJob={직업이름}&weaponType=전체&weaponDetail=전체
+GET: https://dundam.xyz/damage_ranking?page=1&type=7&job={각성이름}&baseJob={직업이름}&weaponType=전체&weaponDetail=전체
+  - Dunfaoff 같은 줄 알았지만 아님.
+
+POST: https://dundam.xyz/dat/dealerRankingData.jsp?page=1&job={각성이름}&baseJob={직업이름}&weaponType=전체&type=7&weaponDetail=전체
 
 직업이름 = {직업이름} + "(" + {성별} + ")"
   - 외전 캐릭터(다크나이트, 크리에이터)는 직업이름이 "외전"
@@ -22,7 +25,10 @@ type
 
 버퍼 URL
 
-https://dundam.xyz/buff_ranking?page=5&type=1&job=1&favor=2
+GET: https://dundam.xyz/buff_ranking?page=5&type=1&job=1&favor=2
+  - Dunfaoff 같은 줄 알았지만 아님
+
+POST: https://dundam.xyz/dat/bufferRankingData.jsp?page=5&type=1&job=1&favor=2
 
 그냥 이대로가 전체 (남크, 여크, 븜크)
   - 하지만 필요한것은 각 직업마다 N캐릭터에 대한 탈리스만, 룬, 스킬 트리 참고. 전체 캐릭터 순위가 필요한것이 아님
