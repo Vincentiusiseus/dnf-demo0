@@ -35,8 +35,8 @@ class Main {
      * 
      * @param rate_limit requests per sec
      */
-    constructor(public rate_limit:number) {
-        this.generator_inst = new MyGenerator(10)
+    constructor(public worker_max:number, public rate_limit:number) {
+        this.generator_inst = new MyGenerator(1000)
         this.generator = this.generator_inst.gen()
         this.client = client
     }
@@ -45,20 +45,24 @@ class Main {
         this.start_dt = new Date()
         this.start_dt_str = new Date(this.start_dt.getTime() - this.start_dt.getTimezoneOffset() * 60000).toISOString()
 
+        console.log(`Connect client`)
         await this.client.connect()
         this.db = this.client.db("dnf-data")
         this.collection = this.db.collection(DB_NAME)
 
-        this.startWorker()
-        this.startWorker()
-        this.startWorker()
-        this.startWorker()
-        this.startWorker()
-        this.startWorker()
-        this.startWorker()
-        this.startWorker()
-        this.startWorker()
-        this.startWorker()
+        let i=0
+        for(const a of Array(this.worker_max)) {
+            const worker = this.startWorker()
+            console.log(`Started worker ${worker.threadId}`)
+            if(i+1 < this.worker_max)
+                await new Promise((res) => {
+                    setTimeout(() => {
+                        res(0)
+                    }, 500)
+                })
+            i++
+        }
+        console.log(`Ran all ${this.worker_max} workers.`)
     }
 
     async terminateIfPossible(worker:Worker) {
@@ -105,6 +109,7 @@ class Main {
     startWorker() {
         const worker = new Worker(path.join(__dirname, "./worker.js"))
         this.workers[worker.threadId] = worker
+        console.log(`Start worker ${worker.threadId}`)
 
         worker.on("message", async (response) => {
             const time_elapsed_s = this.getTimeElapsedSec()
@@ -112,24 +117,34 @@ class Main {
             const { param, char_data } = response
             const data_length = char_data.length
 
-            const char_name = ""
-            const awk_name = ""
-            const is_holy = false
-            
-            const already_received_zero_data = _.get(this.processed_char_adv_map, [char_name, awk_name, <any>is_holy]) != undefined
-            if(false && data_length == 0 && ! already_received_zero_data) {
-                this.generator_inst.triggerNext()
-            }
-
-            if(data_length > 0) {
-                const insert_entries= char_data.map((entry:any) => Object.assign({ param }, entry))
-                await this.collection.insertMany(insert_entries)
-            }
-
             console.log(
                 `[${worker.threadId}][${this.start_dt_str} Took ${time_elapsed_s}]`,
-                `Received ${data_length} data from page (${param.page}) class (${param.jobName}) awk (${param.jobGrowName}). Current requests per second: ${this.num_requests/time_elapsed_s}`
+                `Received ${data_length} data from page (${param.page}) class (${param.jobName}) awk (${param.jobGrowName}) isHoly (${param.isHoly}).`,
+                `Current requests per second: ${this.num_requests/time_elapsed_s}`
             )
+            
+            const char_ids = char_data.map((entry:any) => entry.character_id)
+            const existing_entries = await this.collection.find({ character_id: { $in: char_ids }, param }).toArray()
+            const existing_entry_ids = existing_entries.map((entry:any) => entry.character_id)
+
+            const new_entries = char_data.filter((entry:any) => existing_entry_ids.indexOf(entry.character_id) == -1)
+            const insert_entries = new_entries.map((entry:any) => Object.assign({ param }, entry))
+            const inserted_char_ids = insert_entries.map((entry:any) => entry.character_id)
+            console.log(`[${worker.threadId}] insert ${insert_entries.length} entries`)
+            if(insert_entries.length > 0) {
+                try {
+                    await this.collection.insertMany(insert_entries)
+                }
+                catch(e) {
+                    console.log(char_ids)
+                    console.log(existing_entry_ids)
+                    throw e
+                }
+            }
+            else {
+                console.log(`[${worker.threadId}] Redundant data count (${char_ids.length}) equal the number of entries received. Not inserting any`)
+                this.generator_inst.triggerNext()
+            }
 
             this.postMessageOrTerminate(worker)
             // const gen_result = postMessage()
@@ -137,6 +152,7 @@ class Main {
         })
 
         this.postMessageOrTerminate(worker)
+        return worker
     }
 }
 
@@ -206,6 +222,6 @@ class Main {
 //     startWorker()
 // }
 async function main() {
-    await new Main(10).start()
+    await new Main(10, 20).start()
 }
 main()
