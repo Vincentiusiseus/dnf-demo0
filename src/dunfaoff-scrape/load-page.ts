@@ -2,7 +2,7 @@
 import * as qs from "querystring"
 
 // NPM libs
-import axios from "axios"
+import axios, { AxiosResponse } from "axios"
 
 // fs.writeFileSync = () => {
 //   // console.log("fs.writeFileSync mock")
@@ -25,7 +25,7 @@ export type Payload = {
  * @param {*} page 
  * @param {*} isHoly `true` when the job is not a buffer throws error. `false` works however.
  */
-export async function makeRequest(payload:Payload, page=1) {
+export async function makeRequest(payload:Payload, page=1):Promise<AxiosResponse> {
   const url = "https://dunfaoff.com/ranking.df"
   const data = {
     ...payload,
@@ -34,9 +34,7 @@ export async function makeRequest(payload:Payload, page=1) {
     page
   }
   
-  console.log(`Payload: ${JSON.stringify(data)}`)
-
   const data_encoded = qs.stringify(data)
   const res  = await axios.post(url, data_encoded)
-  return res.data
+  return res
 }

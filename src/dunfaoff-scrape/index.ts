@@ -3,6 +3,8 @@ import * as fs from "fs"
 
 // My libs
 import { makeRequest } from "./load-page"
+import { scrapeCharData } from "./scrape"
+import { client } from "~/src/db"
 
 // My types
 import type { Payload } from "./load-page"
@@ -18,13 +20,15 @@ function* paramGen(jobs_data:any) {
     for(const char_name in jobs_data) {
         const advs = jobs_data[char_name]
         for(const adv in advs) {
-            const awks = advs[adv]
+            const awks:string[] = advs[adv]
             const gender_chars  = char_name.substring(char_name.length - 3)
+            let awk = awks.slice(-2)[0]
+            awk = awk.includes("자각") ? char_name : awk
 
             const output:Payload = {
                 gender: gender_chars in GENDER_MAP ? GENDER_MAP[gender_chars] : "",
                 isHoly: false,
-                jobGrowName: awks.slice(-2)[0],
+                jobGrowName: awk,
                 jobName: char_name
             }
             yield output
@@ -44,8 +48,27 @@ function* paramGen(jobs_data:any) {
 }
 
 async function main() {
+    await client.connect()
+    const db = client.db("dnf-data") 
+    const collection = db.collection("dunfaoff-chars")
+
     const jobs_data = JSON.parse(fs.readFileSync("./data/df-jobs-modified.json", "utf-8"))
     const param_gen = paramGen(jobs_data)
-    console.log(Array.from(param_gen).length) // 66. 3개의 버퍼의 딜러 버전 포함
+
+    let index = 0
+    for(const param of param_gen) {
+        // console.log(index++, param)
+        let page = 1
+        const response = await makeRequest(param, page)
+        const html_content = response.data
+        const page_char_data = await scrapeCharData(html_content)
+        const char_data = page_char_data.map((entry) => Object.assign({ param: { ...param, page } }, entry))
+        
+        if(char_data.length > 0) {
+            await collection.insertMany(char_data)
+        }
+    }
+
+    await client.close()
 }
 main()
