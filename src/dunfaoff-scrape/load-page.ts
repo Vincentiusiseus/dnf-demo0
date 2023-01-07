@@ -35,6 +35,14 @@ export async function makeRequest(payload:Payload, page=1):Promise<AxiosResponse
   }
   
   const data_encoded = qs.stringify(data)
-  const res  = await axios.post(url, data_encoded)
+  let res:AxiosResponse
+  try {
+    res  = await axios.post(url, data_encoded)
+  }
+  catch(e) {
+    // console.log(e.response)
+    console.log(e.response.status)
+    throw e
+  }
   return res
 }
