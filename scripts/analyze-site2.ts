@@ -9,7 +9,7 @@ import { paramGen } from "~/src/dunfaoff-scrape/generator"
 async function main() {
     await client.connect()
     const db = client.db("dnf-data")
-    const collection = db.collection("dunfaoff-chars1")
+    const collection = db.collection("dunfaoff-chars")
     const gen = paramGen()
     
     const redownload_list = []
