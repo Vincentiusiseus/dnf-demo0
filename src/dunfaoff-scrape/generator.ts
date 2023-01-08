@@ -11,7 +11,7 @@ import type { Payload } from "./load-page"
 const BUFFER_ADV_NAMES = ["크루세이더", "인챈트리스"]
 const GENDER_MAP:any = { "(남)": "M", "(여)": "F" }
 
-function* paramGen() {
+export function* paramGen() {
     const jobs_data = JSON.parse(fs.readFileSync("./data/df-jobs-modified.json", "utf-8"))
     for(const char_name in jobs_data) {
         const advs = jobs_data[char_name]

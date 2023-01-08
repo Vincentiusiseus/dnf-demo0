@@ -3,7 +3,7 @@ import * as fs from "fs"
 // NPM libs
 
 // My libs
-import { client } from "./index"
+import { client } from "~/src/db/index"
 
 async function main() {
     await client.connect()
