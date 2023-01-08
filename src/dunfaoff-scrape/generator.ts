@@ -13,6 +13,10 @@ const GENDER_MAP:any = { "(남)": "M", "(여)": "F" }
 
 export function* paramGen() {
     const jobs_data = JSON.parse(fs.readFileSync("./data/df-jobs-modified.json", "utf-8"))
+    yield *_paramGen(jobs_data)
+}
+
+export function* _paramGen(jobs_data:any) {
     for(const char_name in jobs_data) {
         const advs = jobs_data[char_name]
         for(const adv in advs) {
@@ -46,15 +50,14 @@ export function* paramGen() {
 export class Generator {
     page:number = 1
     trigger_next:boolean = false
-    constructor(public page_max:number) { }
+    constructor(public page_max:number, public params:Iterable<any>) { }
 
     triggerNext() {
         this.trigger_next = true
     }
 
     *gen() {
-        const param_generator = paramGen()
-        for(const param of param_generator) {
+        for(const param of this.params) {
             while(this.page <= this.page_max && this.trigger_next == false) {
                 const output = Object.assign({}, param, { page: this.page })
                 yield output

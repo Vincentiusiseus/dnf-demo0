@@ -9,12 +9,12 @@ import type { Collection, Db, MongoClient } from "mongodb"
 
 // My libs
 import { client } from "~/src/db"
-import { Generator as MyGenerator } from "./generator"
+import { Generator as MyGenerator, paramGen } from "./generator"
 
 // My types
 import type { Payload } from "./load-page"
 
-const DB_NAME = "dunfaoff-chars"
+const DB_NAME = "dunfaoff-chars1"
 
 class Main {
     generator_inst:MyGenerator
@@ -35,8 +35,8 @@ class Main {
      * 
      * @param rate_limit requests per sec
      */
-    constructor(public worker_max:number, public rate_limit:number) {
-        this.generator_inst = new MyGenerator(1000)
+    constructor(public worker_max:number, public rate_limit:number, public params:Iterable<any>) {
+        this.generator_inst = new MyGenerator(1000, params)
         this.generator = this.generator_inst.gen()
         this.client = client
     }
@@ -221,7 +221,40 @@ class Main {
 //     startWorker()
 //     startWorker()
 // }
+
+async function getBadParams() {
+    await client.connect()
+    const db = client.db("dnf-data")
+    const collection = db.collection("dunfaoff-chars")
+    const gen = paramGen()
+    
+    const redownload_params = []
+    for(const param of gen) {
+        const keys = Object.keys(param)
+        let query_param:any = {}
+        for(const k of keys) {
+            // @ts-ignore
+            query_param[`param.${k}`] = param[k]
+        }
+        const cursor = await collection.find(query_param)
+        const result_list = await cursor.toArray()
+        const char_ids = result_list.map((entry:any) => entry.character_id)
+        const unique_char_ids = Array.from(new Set(char_ids))
+        const unique_char_length = unique_char_ids.length
+        console.log(param, result_list.length, unique_char_length)
+        if(unique_char_ids.length < 1000) {
+            redownload_params.push(param)
+        }
+    }
+    await client.close()
+    console.log(`Redownload list:`)
+    console.log(redownload_params)
+    return redownload_params
+}
+
 async function main() {
-    await new Main(10, 20).start()
+    const params = await getBadParams()
+    // await new Main(10, 20, paramGen()).start()
+    await new Main(10, 20, params).start()
 }
 main()
