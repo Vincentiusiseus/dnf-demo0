@@ -35,9 +35,10 @@ class MyWorkerHandler extends WorkerHandler {
                         //     console.log(`[${new Date().toISOString()}][${this.id}] Actual wait: ${actual_end_dt.getTime() - actual_start_dt.getTime()}ms`)
                         //     res(0)
                         // }, wait_ms)
+
                         setTimeout(() => res(0), wait_ms)
                     })
-                    this.token_bucket.updateBucket()
+                    this.token_bucket.refillTokenIfPossible()
                 }
                 else {
                     break
@@ -49,7 +50,7 @@ class MyWorkerHandler extends WorkerHandler {
     async postMessage(): Promise<boolean> {
         await this.waiterFunction()
         if(start_dt == null) start_dt = new Date()
-        this.token_bucket.bucket--
+        this.token_bucket.useToken()
         total_requests++
         console.log(`[${new Date().toISOString()}][${this.id}] RATE = ${total_requests / ((new Date().getTime() - start_dt.getTime())/1000)}`)
         return await super.postMessage()
@@ -95,16 +96,14 @@ class Main {
         time_took_ms -= this.first_request_took_ms
         console.log(`[${new Date().toISOString()}][${worker_id}] (${this.count}) res row length ${chars.length} with: ${char_name}. Took ${time_took_ms / 1000}s`)
         if(chars.length > 0) {
-            console.log(`[${new Date().toISOString()}][${worker_id}] (${this.count}) res row length ${chars.length} with: ${char_name}. Took ${time_took_ms / 1000}s`)
             await this.db.collection("char-infos").insertMany(chars)
         }
         else {
-            // console.log(`[${new Date().toISOString()}][${worker_id}] --- No character info retrieved with ${char_name}`)
-            // await this.db.collection("logs").insertOne({
-            //     datetime: new Date().toISOString(),
-            //     msg: `Character name '${char_name}' doesn't exist.`,
-            //     count: this.count
-            // })
+            await this.db.collection("logs").insertOne({
+                datetime: new Date().toISOString(),
+                msg: `Character name '${char_name}' doesn't exist.`,
+                count: this.count
+            })
         }
         if(this.count % 100 == 1) {
             console.log(`[${new Date().toISOString()}][${worker_id}] Inserted (${this.count}/${this.total_names}): ${char_name}. Took ${time_took_ms / 1000}s`)

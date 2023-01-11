@@ -52,6 +52,10 @@ export class DnfApi {
         const url = this._makeUrl(`./servers/${server_id}/characters`)
         url.searchParams.append("characterName", name)
         const response = await axios.get(url.href)
+        /**
+         * 2023-01-11 18:16
+         * headers에 사용량 관련 정보 없음 ㅠㅠ
+         */
         return response.data
     }
 

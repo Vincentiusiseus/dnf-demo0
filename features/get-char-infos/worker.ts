@@ -30,14 +30,14 @@ class MyWorker {
 
             let res_data:any = null
             try {
-                // res_data = await this.df_api.getCharacter("all", char_name)
+                res_data = await this.df_api.getCharacter("all", char_name)
 
                 // DEBUG
-                res_data = { rows: [] }
+                // res_data = { rows: [] }
             }
             catch(e) {
                 if("response" in e) {
-                    console.log(e.response.data)
+                    console.log(`[${new Date().toISOString()}]`,e.response.data, char_name)
                     console.log(e.response.status)
                     throw new Error("Request Response Error")
                 }
