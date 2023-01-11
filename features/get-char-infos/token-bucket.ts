@@ -9,7 +9,26 @@ export class TokenBucket {
         this.last_check = new Date()
     }
 
-    updateBucket() {
+    next_refresh_dt:Date
+    updateBucket1() {
+        const now = new Date()
+        const old_bucket = this.bucket
+        if(this.next_refresh_dt == undefined || now > this.next_refresh_dt) {
+            this.next_refresh_dt = new Date(now.getTime() + this.max_time_s * 1000)
+            console.log(`[${new Date().toISOString()}] Next refresh DT: ${this.next_refresh_dt.toISOString()}`)
+            this.bucket = this.max_tokens
+        }
+
+        // this.bucket--
+
+        if(this.bucket < 0) this.bucket = 0
+
+        console.log(`[${now.toISOString()}] After bucket update ${old_bucket} -> ${this.bucket}`)
+
+        return this.bucket
+    }
+
+    updateBucket0() {
         const now = new Date()
         const time_passed_ms = now.getTime() - this.last_check.getTime()
         this.last_check = new Date()
@@ -33,5 +52,9 @@ export class TokenBucket {
         console.log(`[${now.toISOString()}] After bucket update ${old_bucket} -> ${this.bucket}`)
 
         return this.bucket
+    }
+
+    updateBucket() {
+        return this.updateBucket1()
     }
 }

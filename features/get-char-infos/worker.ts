@@ -30,10 +30,10 @@ class MyWorker {
 
             let res_data:any = null
             try {
-                res_data = await this.df_api.getCharacter("all", char_name)
+                // res_data = await this.df_api.getCharacter("all", char_name)
 
                 // DEBUG
-                // res_data = { rows: [] }
+                res_data = { rows: [] }
             }
             catch(e) {
                 if("response" in e) {

@@ -15,24 +15,33 @@ let start_dt:Date = null
 class MyWorkerHandler extends WorkerHandler {
     mainHandler:any
     waiterFunction:any
+    token_bucket:TokenBucket
 
     setController(inst:Main) {
         this.mainHandler = inst.handleResponse.bind(inst)
+        this.token_bucket = inst.token_bucket
         this.waiterFunction = async () => {
-            const token_bucket = inst.token_bucket
-            const token_left = token_bucket.updateBucket()
-            // console.log("waiter function", this.id, token_left)
-            if(token_left <= 0) {
-                const wait_ms = token_bucket.max_time_s * 1000
-                console.log(`[${new Date().toISOString()}][${this.id}] wait ms ${wait_ms}ms`)
-                const actual_start_dt = new Date()
-                await new Promise((res) => {
-                    setTimeout(() => {
-                        const actual_end_dt = new Date()
-                        console.log(`[${new Date().toISOString()}][${this.id}] Actual wait: ${actual_end_dt.getTime() - actual_start_dt.getTime()}ms`)
-                        res(0)
-                    }, wait_ms)
-                })
+            let wait_count = 0
+            while(true) {
+                const token_left:number = this.token_bucket.bucket
+
+                if(token_left == 0) {
+                    const wait_ms = this.token_bucket.max_time_s * 1000
+                    console.log(`[${new Date().toISOString()}][${this.id}] waiter function (${wait_ms}ms) - token_left '${token_left} || wait count '${++wait_count}'`)
+                    const actual_start_dt = new Date()
+                    await new Promise((res) => {
+                        // setTimeout(() => {
+                        //     const actual_end_dt = new Date()
+                        //     console.log(`[${new Date().toISOString()}][${this.id}] Actual wait: ${actual_end_dt.getTime() - actual_start_dt.getTime()}ms`)
+                        //     res(0)
+                        // }, wait_ms)
+                        setTimeout(() => res(0), wait_ms)
+                    })
+                    this.token_bucket.updateBucket()
+                }
+                else {
+                    break
+                }
             }
         }
     }
@@ -40,6 +49,7 @@ class MyWorkerHandler extends WorkerHandler {
     async postMessage(): Promise<boolean> {
         await this.waiterFunction()
         if(start_dt == null) start_dt = new Date()
+        this.token_bucket.bucket--
         total_requests++
         console.log(`[${new Date().toISOString()}][${this.id}] RATE = ${total_requests / ((new Date().getTime() - start_dt.getTime())/1000)}`)
         return await super.postMessage()
@@ -83,20 +93,21 @@ class Main {
         let time_took_ms = (new Date().getTime() - this.start_dt.getTime())
         if(this.first_request_took_ms == -1) this.first_request_took_ms = time_took_ms
         time_took_ms -= this.first_request_took_ms
+        console.log(`[${new Date().toISOString()}][${worker_id}] (${this.count}) res row length ${chars.length} with: ${char_name}. Took ${time_took_ms / 1000}s`)
         if(chars.length > 0) {
             console.log(`[${new Date().toISOString()}][${worker_id}] (${this.count}) res row length ${chars.length} with: ${char_name}. Took ${time_took_ms / 1000}s`)
             await this.db.collection("char-infos").insertMany(chars)
         }
         else {
-            console.log(`[${new Date().toISOString()}][${worker_id}] --- No character info retrieved with ${char_name}`)
-            await this.db.collection("logs").insertOne({
-                datetime: new Date().toISOString(),
-                msg: `Character name '${char_name}' doesn't exist.`,
-                count: this.count
-            })
+            // console.log(`[${new Date().toISOString()}][${worker_id}] --- No character info retrieved with ${char_name}`)
+            // await this.db.collection("logs").insertOne({
+            //     datetime: new Date().toISOString(),
+            //     msg: `Character name '${char_name}' doesn't exist.`,
+            //     count: this.count
+            // })
         }
         if(this.count % 100 == 1) {
-            console.log(`[${new Date().toISOString()}] Inserted (${this.count}/${this.total_names}): ${char_name}. Took ${time_took_ms / 1000}s`)
+            console.log(`[${new Date().toISOString()}][${worker_id}] Inserted (${this.count}/${this.total_names}): ${char_name}. Took ${time_took_ms / 1000}s`)
         }
     }
 
@@ -124,7 +135,7 @@ class Main {
         // Start workers as many as `max_workers`
         let worker_count = 0
         const max_workers = this.options.max_workers
-        console.log(`[${new Date()}] Starting ${max_workers} workers.`)
+        console.log(`[${new Date().toISOString()}] Starting ${max_workers} workers.`)
         while(++worker_count <= max_workers) {
             this.startWorker()
             if(worker_count < max_workers) {
