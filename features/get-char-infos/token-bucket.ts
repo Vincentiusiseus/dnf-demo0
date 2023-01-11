@@ -13,12 +13,24 @@ export class TokenBucket {
         const now = new Date()
         const time_passed_ms = now.getTime() - this.last_check.getTime()
         this.last_check = new Date()
+        const old_bucket = this.bucket
 
-        this.bucket = this.bucket + time_passed_ms * this.rate_ms
-        if(this.bucket > this.max_tokens) this.bucket = this.max_tokens
-        if(this.bucket > 0) this.bucket--
+        const increment = time_passed_ms * this.rate_ms
+        console.log(`[${now.toISOString()}] time passed ms - ${time_passed_ms}ms || increment - ${increment}`)
+        this.bucket = this.bucket + increment
 
-        console.log(`After bucket update:`, this.bucket)
+        // Keep Max
+        if(this.bucket > this.max_tokens) {
+            console.log(`[${now.toISOString()}] RESET bucket`)
+            this.bucket = this.max_tokens
+        }
+
+        this.bucket--
+        
+        // Keep Min
+        if(this.bucket < 0) this.bucket = 0
+
+        console.log(`[${now.toISOString()}] After bucket update ${old_bucket} -> ${this.bucket}`)
 
         return this.bucket
     }

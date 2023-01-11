@@ -28,9 +28,12 @@ class MyWorker {
         parentPort.on("message", async (param) => {
             const { char_name } = param
 
-            let res_data = null
+            let res_data:any = null
             try {
                 res_data = await this.df_api.getCharacter("all", char_name)
+
+                // DEBUG
+                // res_data = { rows: [] }
             }
             catch(e) {
                 if("response" in e) {

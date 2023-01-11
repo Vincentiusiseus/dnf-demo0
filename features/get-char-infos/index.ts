@@ -6,9 +6,11 @@ import type { Db, FindCursor, MongoClient } from "mongodb"
 
 // My libs
 import { client } from "~/src/db"
-import { DnfApi } from "~/src/dnf-api"
 import { TokenBucket } from "./token-bucket"
 import { WorkerHandler } from "./worker-handler"
+
+let total_requests = 0
+let start_dt:Date = null
 
 class MyWorkerHandler extends WorkerHandler {
     mainHandler:any
@@ -21,13 +23,25 @@ class MyWorkerHandler extends WorkerHandler {
             const token_left = token_bucket.updateBucket()
             // console.log("waiter function", this.id, token_left)
             if(token_left <= 0) {
-                await new Promise((res) => setTimeout(() => res(0), token_bucket.max_time_s * 1000))
+                const wait_ms = token_bucket.max_time_s * 1000
+                console.log(`[${new Date().toISOString()}][${this.id}] wait ms ${wait_ms}ms`)
+                const actual_start_dt = new Date()
+                await new Promise((res) => {
+                    setTimeout(() => {
+                        const actual_end_dt = new Date()
+                        console.log(`[${new Date().toISOString()}][${this.id}] Actual wait: ${actual_end_dt.getTime() - actual_start_dt.getTime()}ms`)
+                        res(0)
+                    }, wait_ms)
+                })
             }
         }
     }
 
     async postMessage(): Promise<boolean> {
         await this.waiterFunction()
+        if(start_dt == null) start_dt = new Date()
+        total_requests++
+        console.log(`[${new Date().toISOString()}][${this.id}] RATE = ${total_requests / ((new Date().getTime() - start_dt.getTime())/1000)}`)
         return await super.postMessage()
     }
 
@@ -49,6 +63,7 @@ class Main {
     token_bucket:TokenBucket
     workers:any = {}
 
+    first_request_took_ms:number = -1
     count:number = 0 
     start_dt:Date
     total_names:number
@@ -62,18 +77,26 @@ class Main {
     async handleResponse(worker_id:number, response:any) {
         const { param, chars } = response
         const { char_name } = param
+        
+        this.count++
+
+        let time_took_ms = (new Date().getTime() - this.start_dt.getTime())
+        if(this.first_request_took_ms == -1) this.first_request_took_ms = time_took_ms
+        time_took_ms -= this.first_request_took_ms
         if(chars.length > 0) {
+            console.log(`[${new Date().toISOString()}][${worker_id}] (${this.count}) res row length ${chars.length} with: ${char_name}. Took ${time_took_ms / 1000}s`)
             await this.db.collection("char-infos").insertMany(chars)
         }
         else {
+            console.log(`[${new Date().toISOString()}][${worker_id}] --- No character info retrieved with ${char_name}`)
             await this.db.collection("logs").insertOne({
                 datetime: new Date().toISOString(),
                 msg: `Character name '${char_name}' doesn't exist.`,
                 count: this.count
             })
         }
-        if(++this.count % 100 == 1) {
-            console.log(`[${new Date()}] Inserted (${this.count}/${this.total_names}): ${char_name}`)
+        if(this.count % 100 == 1) {
+            console.log(`[${new Date().toISOString()}] Inserted (${this.count}/${this.total_names}): ${char_name}. Took ${time_took_ms / 1000}s`)
         }
     }
 
