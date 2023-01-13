@@ -1,6 +1,9 @@
 // Node libs
 import * as fs from "fs"
 
+// NPM libs
+import { ObjectId } from "mongodb"
+
 // NPM types
 import type { Db, FindCursor, MongoClient } from "mongodb"
 
@@ -111,36 +114,36 @@ class Main {
     }
 
     async *getGenerator() {
-        this.cursor = this.db.collection("char-names").find()
+        this.cursor = this.db.collection("char-names").find({ _id: { $gt: new ObjectId('63bb9e4705c8687a7b59c469') } })
         /**
          * 2023-01-11 21:02
          * 7만 몇번째에서 `AxiosError: connect ETIMEDOUT`. 84만 캐릭터 이름중에 7만번째에서
          * 에러응답이 왔으니 아마 여기 코드 넣어두면 여러번 쓸듯
          */
-        const LAST_CHAR_NAME = "눈이없을無"
-        const SKIP_UPTO = 65000
-        let count = 0
-        let skip_char_name_flag = true
+        // const LAST_CHAR_NAME = "눈이없을無"
+        // const SKIP_UPTO = 65000
+        // let count = 0
+        // let skip_char_name_flag = true
         while(await this.cursor.hasNext()) {
             const entry = await this.cursor.next()
-            const char_name = entry["char_name"]
-            if(count <= SKIP_UPTO) {
-                count++
-                if(count % 1000 == 0) console.log(`Skipped (step=1000) ${count}/${SKIP_UPTO}`)
-                continue
-            }
-            if(skip_char_name_flag) {
-                if(char_name != LAST_CHAR_NAME) {
-                    count++
-                    if(count % 100 == 0) console.log(`Skipped (step=100) ${count}/${SKIP_UPTO}`)
-                    console.log(char_name)
-                    continue
-                }
-                else {
-                    console.log(`Continuing from count (${count}) char_name (${char_name})`)
-                    skip_char_name_flag = false
-                }
-            }
+            // const char_name = entry["char_name"]
+            // if(count <= SKIP_UPTO) {
+            //     count++
+            //     if(count % 1000 == 0) console.log(`Skipped (step=1000) ${count}/${SKIP_UPTO}`)
+            //     continue
+            // }
+            // if(skip_char_name_flag) {
+            //     if(char_name != LAST_CHAR_NAME) {
+            //         count++
+            //         if(count % 100 == 0) console.log(`Skipped (step=100) ${count}/${SKIP_UPTO}`)
+            //         console.log(char_name)
+            //         continue
+            //     }
+            //     else {
+            //         console.log(`Continuing from count (${count}) char_name (${char_name})`)
+            //         skip_char_name_flag = false
+            //     }
+            // }
             yield entry
         }
     }

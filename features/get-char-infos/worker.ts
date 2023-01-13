@@ -2,6 +2,9 @@
 import { Worker, MessageChannel, isMainThread, parentPort, threadId, workerData } from "worker_threads"
 import * as fs from "fs"
 
+// NPM libs
+import { AxiosError } from "axios"
+
 // NPM types
 import type { Db, MongoClient } from "mongodb"
 
@@ -27,7 +30,6 @@ class MyWorker {
     setupWorkerHandlers() {
         parentPort.on("message", async (param) => {
             const { char_name } = param
-
             let res_data:any = null
             try {
                 res_data = await this.df_api.getCharacter("all", char_name)
@@ -41,7 +43,16 @@ class MyWorker {
                     console.log(e.response.status)
                     throw new Error("Request Response Error")
                 }
-                throw e
+                else if(e instanceof AxiosError && e.code == "ETIMEDOUT") {
+                    /**
+                     * 2023-01-11 21:58
+                     * Simply try again
+                     */
+                    res_data = await this.df_api.getCharacter("all", char_name)
+                }
+                else {
+                    throw e
+                }
             }
 
             // console.log(res_data)
