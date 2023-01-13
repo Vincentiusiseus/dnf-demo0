@@ -65,6 +65,12 @@ export class DnfApi {
         return response.data
     }
 
+    async getCharacterStatus(server_id:string, id:string) {
+        const url = this._makeUrl(`./servers/${server_id}/characters/${id}/status`)
+        const response = await axios.get(url.href)
+        return response.data
+    }
+
     async getDfJobs() {
         const url = this._makeUrl(`./jobs/`)
         const response = await axios.get(url.href)
@@ -77,8 +83,8 @@ async function main() {
     const inst = new DnfApi(api_key)
     let data:any = null
     try {
-        // data = await inst.getCharacter("all", "이창에흑염룡")
-        data = await inst.getDfJobs()
+        data = await inst.getCharacterStatus("diregie", "ef6d916d16da1154ec59ef0b9fa548cf")
+        // data = await inst.getDfJobs()
     }
     catch(e) {
         console.log(e.response.data)
@@ -87,4 +93,4 @@ async function main() {
     }
     console.dir(data, { depth: 10 })
 }
-// main()
+main()

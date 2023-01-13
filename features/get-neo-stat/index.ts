@@ -1,12 +1,5 @@
 import yargs from "yargs"
 
-/**
- * 
- * @param params README 참고
- */
-export function mapParamsToNeoId(params:any) {
-
-}
 
 class Main {
     constructor() {
