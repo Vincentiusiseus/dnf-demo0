@@ -42,10 +42,20 @@ export class DnfApi {
         return response.data
     }
 
+    /**
+     * 
+     * @param server_id `all` 가능
+     * @param name 
+     * @returns 
+     */
     async getCharacter(server_id:string, name:string) {
         const url = this._makeUrl(`./servers/${server_id}/characters`)
         url.searchParams.append("characterName", name)
         const response = await axios.get(url.href)
+        /**
+         * 2023-01-11 18:16
+         * headers에 사용량 관련 정보 없음 ㅠㅠ
+         */
         return response.data
     }
 
@@ -77,4 +87,4 @@ async function main() {
     }
     console.dir(data, { depth: 10 })
 }
-main()
+// main()
