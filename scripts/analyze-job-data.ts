@@ -5,6 +5,8 @@ class Main {
     char_infos:any[]
     count_advs:any
     count_awks:any
+    all_names:any[] = []
+    all_unique_names:any[] = []
 
     constructor() {
 
@@ -33,6 +35,19 @@ class Main {
         }
     }
 
+    *gen() {
+        const adv_info_gen = this.genAdvs()
+        for(const adv_info of adv_info_gen) {
+            yield { ...adv_info, is_awk: false }
+            let awk_node = adv_info.adv_root.next
+            while(awk_node != undefined) {
+                const awk_name = awk_node.jobGrowName
+                yield { ...adv_info, is_awk: true, awk_node, awk_name }
+                awk_node = awk_node.next
+            }
+        }
+    }
+
     countAdvNames() {
         const generator = this.genAdvs()
         const count:any = {}
@@ -52,6 +67,20 @@ class Main {
             count[awk_name] = awk_name in count ? count[awk_name] + 1 : 1
         }
         return count
+    }
+
+    loadAllNames() {
+        const generator = this.gen()
+        for(const param of generator) {
+            //@ts-ignore
+            this.all_names.push(param.is_awk ? param.awk_name : param.adv_name)
+        }
+        return this.all_names
+    }
+
+    loadAllUniqueNames() {
+        this.all_unique_names = Array.from(new Set(this.all_names))
+        return this.all_unique_names
     }
 
     getRedundantAwks() {
@@ -85,6 +114,8 @@ class Main {
 
         console.log(filterUniqueKeys(this.count_advs))
         console.log(filterUniqueKeys(this.count_awks))
+        console.log(this.loadAllNames(), this.all_names.length)
+        console.log(this.loadAllUniqueNames(), this.all_unique_names.length)
     }
 }
 
