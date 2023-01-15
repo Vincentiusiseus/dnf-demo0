@@ -7,3 +7,6 @@ cred/*
 !cred/.gitkeep
 data/*
 !data/.gitkeep
+
+# Webpack
+dist
