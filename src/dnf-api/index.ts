@@ -65,14 +65,87 @@ export class DnfApi {
         return response.data
     }
 
-    async getCharacterStatus(server_id:string, id:string) {
-        const url = this._makeUrl(`./servers/${server_id}/characters/${id}/status`)
+    async getDfJobs() {
+        const url = this._makeUrl(`./jobs/`)
         const response = await axios.get(url.href)
         return response.data
     }
 
-    async getDfJobs() {
-        const url = this._makeUrl(`./jobs/`)
+    _baseRequestCharacter(server_id:string, character_id:string, path:string) {
+        /**
+         * 2023-01-17 16:10
+         * 이 URL이 기준이고 뒤에 더 붙을것이기 때문에 `/`로 끝남
+         */
+        const url = this._makeUrl(`./servers/${server_id}/characters/${character_id}/`)
+        const new_pathname = new URL(path, url.href).pathname
+        url.pathname = new_pathname
+        return url
+    }
+
+    /**
+     * 2023-01-17 15:41
+     * 명성치, 스탯 등
+     * 
+     * @param server_id 
+     * @param character_id 
+     * @returns 
+     */
+    async getCharacterStatus(server_id:string, character_id:string) {
+        const url = this._makeUrl(`./servers/${server_id}/characters/${character_id}/status`)
+        const response = await axios.get(url.href)
+        return response.data
+    }
+
+    async getCharacterEquipment(server_id:string, character_id:string) {
+        const url = this._baseRequestCharacter(server_id, character_id, "./equip/equipment")
+        const response = await axios.get(url.href)
+        return response.data
+    }
+
+    async getCharacterAvatar(server_id:string, character_id:string) {
+        const url = this._baseRequestCharacter(server_id, character_id, "./equip/avatar")
+        const response = await axios.get(url.href)
+        return response.data
+    }
+
+    async getCharacterCreature(server_id:string, character_id:string) {
+        const url = this._baseRequestCharacter(server_id, character_id, "./equip/creature")
+        const response = await axios.get(url.href)
+        return response.data
+    }
+
+    async getCharacterFlag(server_id:string, character_id:string) {
+        const url = this._baseRequestCharacter(server_id, character_id, "./equip/flag")
+        const response = await axios.get(url.href)
+        return response.data
+    }
+
+    async getCharacterTalisman(server_id:string, character_id:string) {
+        const url = this._baseRequestCharacter(server_id, character_id, "./equip/talisman")
+        const response = await axios.get(url.href)
+        return response.data
+    }
+
+    async getCharacterSkillStyle(server_id:string, character_id:string) {
+        const url = this._baseRequestCharacter(server_id, character_id, "./skill/style")
+        const response = await axios.get(url.href)
+        return response.data
+    }
+
+    async getCharacterSkillBuffEquipment(server_id:string, character_id:string) {
+        const url = this._baseRequestCharacter(server_id, character_id, "./skill/buff/equip/equipment")
+        const response = await axios.get(url.href)
+        return response.data
+    }
+
+    async getCharacterSkillBuffAvatar(server_id:string, character_id:string) {
+        const url = this._baseRequestCharacter(server_id, character_id, "./skill/buff/equip/avatar")
+        const response = await axios.get(url.href)
+        return response.data
+    }
+
+    async getCharacterSkillBuffCreature(server_id:string, character_id:string) {
+        const url = this._baseRequestCharacter(server_id, character_id, "./skill/buff/equip/creature")
         const response = await axios.get(url.href)
         return response.data
     }
@@ -83,13 +156,31 @@ async function main() {
     const inst = new DnfApi(api_key)
     let data:any = null
     try {
-        data = await inst.getCharacterStatus("diregie", "ef6d916d16da1154ec59ef0b9fa548cf")
+        const methods = [
+            "getCharacterStatus",
+            "getCharacterEquipment",
+            "getCharacterAvatar",
+            "getCharacterCreature",
+            "getCharacterFlag",
+            "getCharacterTalisman",
+            "getCharacterSkillStyle",
+            "getCharacterSkillBuffEquipment",
+            "getCharacterSkillBuffAvatar",
+            "getCharacterSkillBuffCreature"
+        ]
+        for(const method of methods) {
+            //@ts-ignore
+            const data = await inst[method]("diregie", "ef6d916d16da1154ec59ef0b9fa548cf")
+            console.log(data, method)
+        }
         // data = await inst.getDfJobs()
     }
     catch(e) {
-        console.log(e.response.data)
-        console.log(e.response)
-        // throw e
+        if("response" in e) {
+            console.log(e.response.data)
+            console.log(e.response)
+        }
+        else throw e
     }
     console.dir(data, { depth: 10 })
 }
