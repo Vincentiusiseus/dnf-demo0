@@ -86,6 +86,9 @@ export class DnfApi {
      * 2023-01-17 17:29
      * 던파 공홈 "캐릭터 검색 > 타임라인"에서 나오는 데이터 응답. "언제 로그인"등은 없고
      * 아이템 획득, 상급던전 클리어 등으로 마지막으로 게임 플레이 한 날을 알수 있음
+     * 
+     * 기본 날짜 범위를 벗어날시 `next` 키에 값은 `null`. 이럴경우 날짜범위필요.
+     * endDate는 startDate로 부터 90일 이내 (API Doc 참고)
      * @param server_id 
      * @param character_id 
      * @returns 
