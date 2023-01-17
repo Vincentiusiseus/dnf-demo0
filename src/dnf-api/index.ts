@@ -83,6 +83,20 @@ export class DnfApi {
     }
 
     /**
+     * 2023-01-17 17:29
+     * 던파 공홈 "캐릭터 검색 > 타임라인"에서 나오는 데이터 응답. "언제 로그인"등은 없고
+     * 아이템 획득, 상급던전 클리어 등으로 마지막으로 게임 플레이 한 날을 알수 있음
+     * @param server_id 
+     * @param character_id 
+     * @returns 
+     */
+    async getCharacterTimeline(server_id:string, character_id:string) {
+        const url = this._makeUrl(`./servers/${server_id}/characters/${character_id}/timeline`)
+        const response = await axios.get(url.href)
+        return response.data
+    }
+
+    /**
      * 2023-01-17 15:41
      * 명성치, 스탯 등
      * 
@@ -157,21 +171,25 @@ async function main() {
     let data:any = null
     try {
         const methods = [
-            "getCharacterStatus",
-            "getCharacterEquipment",
-            "getCharacterAvatar",
-            "getCharacterCreature",
-            "getCharacterFlag",
-            "getCharacterTalisman",
-            "getCharacterSkillStyle",
-            "getCharacterSkillBuffEquipment",
-            "getCharacterSkillBuffAvatar",
-            "getCharacterSkillBuffCreature"
+            "getCharacterTimeline",
+            // "getCharacterStatus",
+            // "getCharacterEquipment",
+            // "getCharacterAvatar",
+            // "getCharacterCreature",
+            // "getCharacterFlag",
+            // "getCharacterTalisman",
+            // "getCharacterSkillStyle",
+            // "getCharacterSkillBuffEquipment",
+            // "getCharacterSkillBuffAvatar",
+            // "getCharacterSkillBuffCreature"
         ]
         for(const method of methods) {
             //@ts-ignore
             const data = await inst[method]("diregie", "ef6d916d16da1154ec59ef0b9fa548cf")
             console.log(data, method)
+            if(method == "getCharacterTimeline") {
+                console.log(data.timeline.rows)
+            }
         }
         // data = await inst.getDfJobs()
     }
@@ -182,6 +200,5 @@ async function main() {
         }
         else throw e
     }
-    console.dir(data, { depth: 10 })
 }
 main()
