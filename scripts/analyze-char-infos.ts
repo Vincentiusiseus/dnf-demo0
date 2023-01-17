@@ -58,9 +58,9 @@ class Main {
         for(const param of queryable_params) {
             /**
              * 2023-01-17 16:35
-             * `level: 110` Total 650588  
+             * `level: 110` Total 650,588  
              * 
-             * Without `level: 110` Total 903915
+             * Without `level: 110` Total 903,915
              */
             const cursor = this.db.collection("char-infos").find({ jobId: param.job_id, jobGrowId: param.job_grow_id, level: 110 })
             const result_total = (await cursor.toArray()).length
