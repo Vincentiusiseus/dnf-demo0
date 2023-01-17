@@ -94,6 +94,24 @@ class Main {
         }
     }
 
+    getQueryableParams() {
+        const output:any = []
+        const generator = this.genAdvs()
+        for(const param of generator) {
+            let awk_node = param.adv_root
+            while(awk_node.next != undefined) {
+                awk_node = awk_node.next
+            }
+            output.push({
+                job_id: param.char_info.jobId,
+                job_grow_id: awk_node.jobGrowId,
+                job_name: param.char_info.jobName,
+                job_grow_name:awk_node.jobGrowName 
+            })
+        }
+        return output
+    }
+
     start() {
         const file_path = "./data/df-jobs.json"
         const json_content = JSON.parse(fs.readFileSync(file_path, "utf-8"))
@@ -116,6 +134,8 @@ class Main {
         console.log(filterUniqueKeys(this.count_awks))
         console.log(this.loadAllNames(), this.all_names.length)
         console.log(this.loadAllUniqueNames(), this.all_unique_names.length)
+        const queryable_params = this.getQueryableParams()
+        console.log(queryable_params, queryable_params.length)
     }
 }
 
