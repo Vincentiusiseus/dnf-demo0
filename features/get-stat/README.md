@@ -1,0 +1,1 @@
+npm exec webpack -- --config features\get-stat\webpack.config.js
