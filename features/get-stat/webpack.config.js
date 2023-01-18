@@ -1,5 +1,6 @@
 const path = require("path")
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
+const project_root = path.join(__dirname, "../..")
 
 module.exports = {
   mode: "development",
@@ -11,7 +12,7 @@ module.exports = {
    * Page entry files added in server's code.
    */
   entry: {
-    main: "./features/get-stat/index.ts"
+    main: path.join(project_root, "./features/get-stat/index.ts")
   },
 
   module: {
@@ -33,7 +34,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
-      "~": __dirname
+      "~": project_root
     }
   },
   devServer: {
