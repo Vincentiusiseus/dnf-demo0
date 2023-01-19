@@ -14,7 +14,6 @@ module.exports = {
   entry: {
     main: path.join(project_root, "./features/get-stat/index.ts")
   },
-
   module: {
     rules: [
       {
@@ -30,6 +29,9 @@ module.exports = {
         ]
       },
     ]
+  },
+  node: {
+    __dirname: false
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
