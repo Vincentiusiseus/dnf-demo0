@@ -9,6 +9,7 @@ import type { Db, FindCursor, MongoClient } from "mongodb"
 
 // My libs
 import { client } from "~/src/db"
+import { TokenBucket } from "./token-bucket"
 import { WorkerHandler } from "./worker-handler"
 
 let total_requests = 0

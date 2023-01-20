@@ -41,9 +41,16 @@ class MyWorker {
             }
             catch(e) {
                 if("response" in e) {
-                    console.log(`[${new Date().toISOString()}]`,e.response.data, args)
-                    console.log(e.response.status)
-                    throw new Error("Request Response Error")
+                    const error_res_data = e.response.data
+                    console.log(`[${new Date().toISOString()}] An error occurred.`, error_res_data, param)
+
+                    if(error_res_data.error.code == "DNF001") {
+                        console.log(`Ignoring DNF001 'NOT_FOUND_CHARACTER' error.`)
+                    }
+                    else {
+                        console.log(e.response.status)
+                        throw new Error("Request Response Error")
+                    }
                 }
                 else if(e instanceof AxiosError && e.code == "ETIMEDOUT") {
                     /**

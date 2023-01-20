@@ -74,5 +74,6 @@ export class WorkerManager {
                 await new Promise((res) => setTimeout(() => res(0), 500))
             }
         }
+        console.log(`Ran all ${this.max_workers} workers`)
     }
 }

@@ -28,6 +28,8 @@ type GenEntry = {
     }
     dnf_api_method_name:string
     job_param: JobParam
+    job_index:number
+    job_length:number
     args: [string, string]
     adventurer_index:number
     adventurer_length:number
@@ -82,12 +84,19 @@ class Main {
     }
 
     async *generator():AsyncGenerator<GenEntry> {
+        const SKIP_JOB_INDEX_UPTO = 20
+        const SKIP_ADVENTURER_INDEX_UPTO:any = undefined
         let job_index = 0
         for(const job_param of this.job_params) {
+            job_index++
+            if(SKIP_JOB_INDEX_UPTO != undefined && job_index < SKIP_JOB_INDEX_UPTO) {
+                continue
+            }
+
             const query = {
                 jobId: job_param.job_id,
                 jobGrowId: job_param.job_grow_id,
-                level: 110
+                level: 110,
             }
             const cursor = this.db.collection("char-infos").find(query)
             const adventurer_length = (await cursor.clone().toArray()).length
@@ -106,7 +115,7 @@ class Main {
                     const args:any[] = [adventurer.serverId, adventurer.characterId]
                     adventurer_index++
                     // @ts-ignore
-                    yield { adventurer, dnf_api_method_name, job_param, args, adventurer_index, adventurer_length }
+                    yield { adventurer, dnf_api_method_name, job_param, args, adventurer_index, adventurer_length, job_index, job_length: this.job_params.length }
                 }
             }
 
@@ -115,6 +124,7 @@ class Main {
 
     async handleResponse(response:Response, worker:Worker) {
         const { param, res_data } = response
+
         const worker_id = worker.threadId
         
         let time_took_ms = (new Date().getTime() - this.start_dt.getTime())
@@ -125,8 +135,20 @@ class Main {
         if(this.debug_count % 100 == 1) {
             const adventurer_index = param.adventurer_index
             const adventurer_length = param.adventurer_length
-            console.log(`[${new Date().toISOString()}] Debug count: ${this.debug_count} || Adventurer ${adventurer_index}/${adventurer_length}. Took ${time_took_ms / 1000}s`)
+            const job_index = param.job_index
+            const job_length = param.job_length
+            console.log(
+                `[${new Date().toISOString()}] Debug count: ${this.debug_count} || Job ${job_index}/${job_length} || Adventurer ${adventurer_index}/${adventurer_length}.`,
+                `Took ${time_took_ms / 1000}s`
+            )
         }
+
+        /**
+         * 2023-01-20 15:29
+         * 무시된 에러 DNF001 "유효하지 않은 캐릭터 정보"
+         */
+        if(res_data == undefined) return
+
         await this.db.collection("char-stats").insertOne(res_data)
     }
 
