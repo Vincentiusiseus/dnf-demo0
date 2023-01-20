@@ -2,15 +2,55 @@
 import { Worker } from "worker_threads"
 import * as path from "path"
 
+// My libs
+import { TokenBucket } from "./token-bucket"
+
 type CanHandleResponse = { handleResponse: (response:any, worker:Worker) => Promise<any> }
 
 export class WorkerManager {
     workers:{[id:number]:Worker} = {}
-    constructor(public inst:CanHandleResponse, public max_workers:number, public iterators:AsyncIterator<any>) {}
+    token_bucket:TokenBucket
+    constructor(
+        public inst:CanHandleResponse,
+        public max_workers:number,
+        public iterators:AsyncIterator<any>,
+        public max_tokens:number,
+        public max_time_s:number
+    ) {
+        this.token_bucket = new TokenBucket(max_tokens, max_time_s)
+    }
+
+    async waitFunction(id:number) {
+        let wait_count = 0
+        while(true) {
+            const token_left:number = this.token_bucket.bucket
+
+            if(token_left == 0) {
+                const wait_ms = this.token_bucket.max_time_s * 1000
+                console.log(`[${new Date().toISOString()}][${id}] waiter function (${wait_ms}ms) - token_left '${token_left} || wait count '${++wait_count}'`)
+                const actual_start_dt = new Date()
+                await new Promise((res) => {
+                    // setTimeout(() => {
+                    //     const actual_end_dt = new Date()
+                    //     console.log(`[${new Date().toISOString()}][${this.id}] Actual wait: ${actual_end_dt.getTime() - actual_start_dt.getTime()}ms`)
+                    //     res(0)
+                    // }, wait_ms)
+
+                    setTimeout(() => res(0), wait_ms)
+                })
+                this.token_bucket.refillTokenIfPossible()
+            }
+            else {
+                break
+            }
+        }
+    }
 
     async postMessage(id:any) {
         const param = await this.iterators.next()
         const worker = this.workers[id]
+        await this.waitFunction(id)
+        this.token_bucket.useToken()
         worker.postMessage(param.value)
     }
     

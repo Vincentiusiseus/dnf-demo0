@@ -11,30 +11,53 @@ import { Prompt } from "./prompt"
 import { dfQueryableJobsGenerator } from "./common"
 import { client } from "../../src/db"
 import { WorkerManager } from "./worker-manager"
+import { TokenBucket } from "./token-bucket"
 
 // My Types
-type Param = { job_id:string, job_grow_id:string }
+type JobParam = { job_id:string, job_grow_id:string }
+type GenEntry = {
+    adventurer: {
+        serverId: string,
+        characterId:string,
+        characterName: string,
+        level:number,
+        jobId:string,
+        jobGrowId:string,
+        jobName:string,
+        jobGrowName:string
+    }
+    dnf_api_method_name:string
+    job_param: JobParam
+    args: [string, string]
+    adventurer_index:number
+    adventurer_length:number
+}
+type Response = {
+    res_data: any
+    param: GenEntry
+}
 
 const PROMPT:boolean = false
 const METHODS = [
-    "getCharacterTimeline",
+    // "getCharacterTimeline",
     "getCharacterStatus",
-    "getCharacterEquipment",
-    "getCharacterAvatar",
-    "getCharacterCreature",
-    "getCharacterFlag",
-    "getCharacterTalisman",
-    "getCharacterSkillStyle",
-    "getCharacterSkillBuffEquipment",
-    "getCharacterSkillBuffAvatar",
-    "getCharacterSkillBuffCreature"
+    // "getCharacterEquipment",
+    // "getCharacterAvatar",
+    // "getCharacterCreature",
+    // "getCharacterFlag",
+    // "getCharacterTalisman",
+    // "getCharacterSkillStyle",
+    // "getCharacterSkillBuffEquipment",
+    // "getCharacterSkillBuffAvatar",
+    // "getCharacterSkillBuffCreature"
 ]
 
 class Main {
-    job_params:Param[] = []
+    job_params:JobParam[] = []
     client:MongoClient
     db:Db
 
+    token_bucket:TokenBucket
     start_dt = new Date()
     gen_total:number
     debug_count = 0
@@ -42,6 +65,7 @@ class Main {
 
     constructor() {
         this.client = client
+        this.token_bucket = new TokenBucket(95, 1)
     }
 
     async loadJobParams() {
@@ -57,7 +81,7 @@ class Main {
         }
     }
 
-    async *generator() {
+    async *generator():AsyncGenerator<GenEntry> {
         let job_index = 0
         for(const job_param of this.job_params) {
             const query = {
@@ -70,10 +94,8 @@ class Main {
             console.log(`New job param start`, job_param,` || Adventurer total: ${adventurer_length}`)
 
             let adventurer_index = 0
-            const adventurers = []
             while(await cursor.hasNext()) {
                 const adventurer = await cursor.next()
-                adventurers.push(adventurer)
 
                 for(const dnf_api_method_name of METHODS) {
                     /**
@@ -82,37 +104,30 @@ class Main {
                      * ALL of them are server_id then character_id
                      */
                     const args:any[] = [adventurer.serverId, adventurer.characterId]
-                    yield { adventurer, dnf_api_method_name, job_param, args }
+                    adventurer_index++
+                    // @ts-ignore
+                    yield { adventurer, dnf_api_method_name, job_param, args, adventurer_index, adventurer_length }
                 }
             }
 
-            if(this.debug_count % 100 == 1) {
-                console.log(`[${new Date().toISOString()}] Debug count: ${++this.debug_count} || Current adventurers: ${adventurers.length} || Adventurer ${++adventurer_index}/${adventurer_length}`)
-            }
         }
     }
 
-    async handleResponse(response:any, worker:Worker) {
-        const { param, chars } = response
-        const { char_name } = param
+    async handleResponse(response:Response, worker:Worker) {
+        const { param, res_data } = response
         const worker_id = worker.threadId
         
-        this.debug_count++
-
         let time_took_ms = (new Date().getTime() - this.start_dt.getTime())
         if(this.first_request_took_ms == -1) this.first_request_took_ms = time_took_ms
         time_took_ms -= this.first_request_took_ms
-        console.log(`[${new Date().toISOString()}][${worker_id}] (${this.debug_count}) res row length ${chars.length} with: ${char_name}. Took ${time_took_ms / 1000}s`)
-        if(chars.length > 0) {
-            await this.db.collection("char-stats").insertMany(chars)
+
+        this.debug_count++
+        if(this.debug_count % 100 == 1) {
+            const adventurer_index = param.adventurer_index
+            const adventurer_length = param.adventurer_length
+            console.log(`[${new Date().toISOString()}] Debug count: ${this.debug_count} || Adventurer ${adventurer_index}/${adventurer_length}. Took ${time_took_ms / 1000}s`)
         }
-        else {
-            await this.db.collection("logs").insertOne({
-                datetime: new Date().toISOString(),
-                msg: `Character name '${char_name}' doesn't exist.`,
-                debug_count: this.debug_count
-            })
-        }
+        await this.db.collection("char-stats").insertOne(res_data)
     }
 
     async start() {
@@ -122,9 +137,8 @@ class Main {
         await this.loadJobParams()
         
         const gen = this.generator()
-        const worker_manager = new WorkerManager(this, 1, gen)
+        const worker_manager = new WorkerManager(this, 10, gen, 95, 1)
         await worker_manager.start()
-        await this.client.close()
     }
 }
 

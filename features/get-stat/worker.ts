@@ -58,11 +58,7 @@ class MyWorker {
                 }
             }
 
-            console.log(res_data)
-            // const chars = res_data.rows
-            const chars:any = undefined 
-
-            parentPort.postMessage({ param, chars })
+            parentPort.postMessage({ param, res_data })
         })
     }
 
