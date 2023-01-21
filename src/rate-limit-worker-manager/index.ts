@@ -4,6 +4,7 @@ import * as path from "path"
 
 // My libs
 import { TokenBucket } from "./token-bucket"
+import { main_logger as log } from "./logger"
 
 export type Handler<Response> = {
     handleResponse: (response:Response, worker:Worker) => Promise<any>
@@ -44,14 +45,20 @@ export class RatelimitWorkerManager<Response=any> {
 
             if(token_left == 0) {
                 const wait_ms = this.token_bucket.max_time_s * 1000
-                console.log(`[${new Date().toISOString()}][${worker_id}] waiter function (${wait_ms}ms) - token_left '${token_left} || wait count '${++wait_count}'`)
+                log.info({
+                    worker_id,
+                    message: `waiter function (${wait_ms}ms) - token_left '${token_left} || wait count '${++wait_count}'`
+                })
 
                 const actual_start_dt = new Date()
                 await new Promise((res) => {
                     setTimeout(() => {
                         const actual_end_dt = new Date()
                         const actual_wait = actual_end_dt.getTime() - actual_start_dt.getTime()
-                        console.log(`[${new Date().toISOString()}][${worker_id}] Actual wait: ${actual_wait}ms`)
+                        log.info({
+                            worker_id,
+                            message: `Actual wait: ${actual_wait}ms`
+                        })
                         res(0)
                     }, wait_ms)
                 })
@@ -70,12 +77,15 @@ export class RatelimitWorkerManager<Response=any> {
          * `exit_code == 1` means it was terminated. https://nodejs.org/api/worker_threads.html#event-exit
          */
         const exit_code = await worker.terminate()
-        console.log(`[${new Date().toISOString()}][${worker_id}] Worker was terminated with exit code (${exit_code})`)
+        log.info({
+            worker_id,
+            message: `Worker was terminated with exit code (${exit_code})`
+        })
         delete this.workers[worker_id]
         if(Object.keys(this.workers).length == 0) {
-            console.log(`[${new Date().toISOString()}] All workers had been terminated.`)
+            log.info(`All workers had been terminated.`)
             if(this.workers_started_count == this.max_workers) {
-                console.log(`[${new Date().toISOString()}] All workers had been STARTED AND been terminated.`)
+                log.info(`All workers had been STARTED AND been terminated.`)
             }
             this.inst.handleAllWorkersTerminated()
         }
@@ -93,10 +103,10 @@ export class RatelimitWorkerManager<Response=any> {
         const iter_result = await this.iterators.next()
         const value = iter_result.value
         const is_done = iter_result.done
-        console.log("Post message wait if needed", iter_result)
+        log.info("Post message wait if needed", iter_result)
         if(is_done) {
             this.iter_done = is_done
-            console.log(`Generator is 'done'. Worker ${worker.threadId} will be termiated.`)
+            log.info(`Generator is 'done'. Worker ${worker.threadId} will be termiated.`)
             await this.handleIteratorDone(worker)
             return
         }
@@ -114,7 +124,7 @@ export class RatelimitWorkerManager<Response=any> {
             await this.postMessage(worker)
         })
         worker.on("exit", (exit_code) => {
-            console.log(`Worker (${worker.threadId}) exitted with code ${exit_code}`)
+            log.info(`Worker (${worker.threadId}) exitted with code ${exit_code}`)
         })
         await this.postMessage(worker)
         return worker
@@ -123,15 +133,15 @@ export class RatelimitWorkerManager<Response=any> {
     async start() {
         while(++this.workers_started_count <= this.max_workers) {
             if(this.iter_done) {
-                console.log(`Iterator finished iterating. Stop starting new workers. Started workers so far: ${this.workers_started_count}`)
+                log.info(`Iterator finished iterating. Stop starting new workers. Started workers so far: ${this.workers_started_count}`)
                 break
             }
             const worker = await this.startNewWorker()
-            console.log(`Started worker. Count: ${this.workers_started_count}`, worker.threadId)
+            log.info(`Started worker. Count: ${this.workers_started_count}`, worker.threadId)
             if(this.workers_started_count < this.max_workers) {
                 await new Promise((res) => setTimeout(() => res(0), this.options.worker_start_interval_ms))
             }
         }
-        console.log(`Ran ${this.workers_started_count}/${this.max_workers} workers`)
+        log.info(`Ran ${this.workers_started_count}/${this.max_workers} workers`)
     }
 }
