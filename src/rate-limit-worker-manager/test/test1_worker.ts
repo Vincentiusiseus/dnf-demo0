@@ -10,6 +10,7 @@ import type { Db, MongoClient } from "mongodb"
 
 // My libs
 import { DnfApi } from "~/src/dnf-api"
+import { thread_logger as log } from "../logger"
 
 // My types
 
@@ -25,13 +26,13 @@ class MyWorker {
 
     setupWorkerHandlers() {
         parentPort.on("message", async (param) => {
-            console.log(`Worker ${threadId} got message`, param)
+            log.info(`got message`, { param, worker_id:threadId })
             parentPort.postMessage("hi")
         })
     }
 
     start() {
-        console.log(`Worker ${threadId} started.`)
+        log.info({ worker_id:threadId, message: `started.` })
         this.setupWorkerHandlers()
     }
 }
