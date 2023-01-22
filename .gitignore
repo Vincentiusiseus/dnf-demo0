@@ -10,3 +10,6 @@ data/*
 
 # Webpack
 dist
+
+# ts-node thing? `v8-commile-cache-lib` stuff
+undefined
