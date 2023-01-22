@@ -59,7 +59,6 @@ class Main {
     client:MongoClient
     db:Db
 
-    token_bucket:TokenBucket
     start_dt = new Date()
     gen_total:number
     debug_count = 0
@@ -67,7 +66,6 @@ class Main {
 
     constructor() {
         this.client = client
-        this.token_bucket = new TokenBucket(95, 1)
     }
 
     async loadJobParams() {
@@ -84,7 +82,7 @@ class Main {
     }
 
     async *generator():AsyncGenerator<GenEntry> {
-        const SKIP_JOB_INDEX_UPTO = 20
+        const SKIP_JOB_INDEX_UPTO = 63
         const SKIP_ADVENTURER_INDEX_UPTO:any = undefined
         let job_index = 0
         for(const job_param of this.job_params) {
@@ -149,12 +147,16 @@ class Main {
          */
         if(res_data == undefined) return
 
-        await this.db.collection("char-stats").insertOne(res_data)
+        // await this.db.collection("char-stats").insertOne(res_data)
+    }
+
+    async connectDb() {
+        await this.client.connect()
+        this.db = this.client.db("dnf-data")
     }
 
     async start() {
-        await this.client.connect()
-        this.db = this.client.db("dnf-data")
+        await this.connectDb()
         
         await this.loadJobParams()
         

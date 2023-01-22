@@ -48,6 +48,9 @@ export class WorkerManager {
 
     async postMessage(id:any) {
         const param = await this.iterators.next()
+        if(param.done) {
+            console.log(`============ FINISHED ITERATING =============`)
+        }
         const worker = this.workers[id]
         await this.waitFunction(id)
         this.token_bucket.useToken()
