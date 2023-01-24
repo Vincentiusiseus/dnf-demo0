@@ -80,10 +80,8 @@ export class RatelimitWorkerManager<MessageData=any, ResData=any, ResError=any> 
         delete this.workers[worker_id]
         if(Object.keys(this.workers).length == 0) {
             log.info(`All workers had been terminated.`)
-            if(this.workers_started_count == this.max_workers) {
-                log.info(`All workers had been STARTED AND been terminated.`)
-                log.info("%o", this.workers_handle_count)
-            }
+            log.info(`(${this.workers_started_count}/${this.max_workers}) workers had been STARTED AND been terminated.`)
+            log.info("%o", this.workers_handle_count)
             this.inst.handleAllWorkersTerminated()
         }
     }
