@@ -1,7 +1,6 @@
 {  
   "compilerOptions": {
     "jsx": "preserve",
-    "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
