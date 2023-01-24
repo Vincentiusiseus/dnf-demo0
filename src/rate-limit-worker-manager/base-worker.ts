@@ -8,7 +8,11 @@ import { AxiosError, responseEncoding } from "axios"
 import { Message, WorkerResponse, WorkerResponseSuccess, WorkerResponseError } from "./types"
 
 export class BaseWorker<MessageArgs, ResData, ResError> {
-    constructor() {}
+    worker_id:number
+    
+    constructor() {
+        this.worker_id = threadId
+    }
 
     async defaultMessageHandler(args:MessageArgs):Promise<WorkerResponse<ResData, ResError>> {
         return {
@@ -50,7 +54,6 @@ export class BaseWorker<MessageArgs, ResData, ResError> {
     }
 
     start() {
-        console.log(`Start: ${threadId}`)
         this.setupWorkerHandlers()
     }
 }

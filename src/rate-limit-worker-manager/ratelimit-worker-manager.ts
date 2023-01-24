@@ -16,6 +16,8 @@ export class RatelimitWorkerManager<MessageData=any, ResData=any, ResError=any> 
     iter_done:boolean = false
     workers_started_count:number = 0
 
+    workers_handle_count:any = {}
+
     constructor(
         public inst:Handler<ResData,ResError>,
         public worker_file_path:string,
@@ -35,7 +37,6 @@ export class RatelimitWorkerManager<MessageData=any, ResData=any, ResError=any> 
     async waitIfNeeded(worker_id:number) {
         let wait_count = 0
         while(true) {
-            log.info("================================================")
             const token_left:number = this.token_bucket.bucket
 
             if(token_left == 0) {
@@ -81,6 +82,7 @@ export class RatelimitWorkerManager<MessageData=any, ResData=any, ResError=any> 
             log.info(`All workers had been terminated.`)
             if(this.workers_started_count == this.max_workers) {
                 log.info(`All workers had been STARTED AND been terminated.`)
+                log.info("%o", this.workers_handle_count)
             }
             this.inst.handleAllWorkersTerminated()
         }
@@ -97,25 +99,31 @@ export class RatelimitWorkerManager<MessageData=any, ResData=any, ResError=any> 
     async postMessage(worker:Worker) {
         const iter_result = await this.iterators.next()
         const is_done = iter_result.done
+        const worker_id = worker.threadId
+
         log.info("Post message wait if needed", iter_result)
         if(is_done) {
             this.iter_done = is_done
-            log.info(`Generator is 'done'. Worker ${worker.threadId} will be termiated.`)
+            log.info(`Generator is 'done'. Worker ${worker_id} will be termiated.`)
             await this.handleIteratorDone(worker)
             return
         }
         const value:MessageData = iter_result.value
-        await this.waitIfNeeded(worker.threadId)
+        await this.waitIfNeeded(worker_id)
         this.token_bucket.useToken()
+        this.workers_handle_count[worker_id] = worker_id in this.workers_handle_count ? this.workers_handle_count[worker_id] + 1 : 1
         worker.postMessage(value)
     }
     
     async startNewWorker() {
         const worker = new Worker(path.join(__dirname, "./worker.js"), { env: { worker_fp: this.worker_file_path } })
+        this.workers_started_count++
+        log.info(`Started worker. Count: ${this.workers_started_count}`, worker.threadId)
+
         const id = worker.threadId
         this.workers[id] = worker
         worker.on("message", async (response:WorkerResponse<ResData, ResError>) => {
-            log.info("%o", response, { worker_id: id })
+            log.info("Got response: %o", response, { worker_id: id })
             if("data" in response) {
                 await this.inst.handleResponse(response.data, worker)
             }
@@ -139,12 +147,9 @@ export class RatelimitWorkerManager<MessageData=any, ResData=any, ResError=any> 
                 break
             }
 
-            this.workers_started_count++
-            log.info("%s %s", this.workers_started_count, this.max_workers)
-            const worker = await this.startNewWorker()
-            log.info(`Started worker. Count: ${this.workers_started_count}`, worker.threadId)
+            this.startNewWorker()
             if(this.workers_started_count < this.max_workers) {
-                // await new Promise((res) => setTimeout(() => res(0), this.options.worker_start_interval_ms))
+                await new Promise((res) => setTimeout(() => res(0), this.options.worker_start_interval_ms))
             }
         }
         log.info(`Ran ${this.workers_started_count}/${this.max_workers} workers`)

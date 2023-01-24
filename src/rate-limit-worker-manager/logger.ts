@@ -21,7 +21,7 @@ export const thread_logger = winston.createLogger({
             format: winston.format.combine(
                 winston.format.timestamp(),
                 winston.format.splat(),
-                winston.format.printf(({ timestamp, worker_id, message, level, ...meta }) => `[${timestamp}][${worker_id}] ${message} ${JSON.stringify(meta)}`)
+                winston.format.printf(({ timestamp, worker_id, message, level, ...meta }) => `[${timestamp}][Worker:${worker_id}] ${message}`)
             )
         })
     ]

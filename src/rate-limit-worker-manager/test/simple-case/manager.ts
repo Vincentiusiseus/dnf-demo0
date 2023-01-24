@@ -32,7 +32,7 @@ async function * generator() {
 async function main() {
     const my_handler = new MyHandler()
     const worker_path = path.join(__dirname, "./my_worker.ts")
-    const manager = new RatelimitWorkerManager(my_handler, worker_path, 8, generator(), 5, 1, { worker_start_interval_ms: 1000 })
+    const manager = new RatelimitWorkerManager(my_handler, worker_path, 8, generator(), 5, 1)
     await manager.start()
 }
 main()
