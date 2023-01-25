@@ -33,7 +33,7 @@ export class RatelimitWorkerManager<MessageData=any, ResData=any, ResError=any> 
         public iterators:AsyncIterator<MessageData>,
         public max_tokens:number,
         public max_time_s:number,
-        public options:Options
+        public options?:Options
     ) {
         _.defaultsDeep(this.options, option_defaults)
 
