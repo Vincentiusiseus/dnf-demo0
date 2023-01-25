@@ -1,0 +1,82 @@
+[
+  {
+    "is_pure_class": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "a7a059ebe9e6054c0644b40ef316d6e9",
+    "class_name": "격투가(여)"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "f6a4ad30555b99b499c07835f87ce522",
+    "class_name": "프리스트(남)"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "944b9aab492c15a8474f96947ceeb9e4",
+    "class_name": "거너(여)"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "ddc49e9ad1ff72a00b53c6cff5b1e920",
+    "class_name": "도적"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "ca0f0e0e9e1d55b5f9955b03d9dd213c",
+    "class_name": "격투가(남)"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "17e417b31686389eebff6d754c3401ea",
+    "class_name": "다크나이트"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "b522a95d819a5559b775deb9a490e49a",
+    "class_name": "크리에이터"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "0ee8fa5dc525c1a1f23fc6911e921e4a",
+    "class_name": "나이트"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "3deb7be5f01953ac8b1ecaa1e25e0420",
+    "class_name": "마창사"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "0c1b401bb09241570d364420b3ba3fd7",
+    "class_name": "프리스트(여)"
+  },
+  {
+    "is_pure_class": true,
+    "class_id": "986c2b3d72ee0e4a0b7fcfbe786d4e02",
+    "class_name": "총검사"
+  }
+]

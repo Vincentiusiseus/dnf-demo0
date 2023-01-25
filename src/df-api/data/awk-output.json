@@ -1,0 +1,1118 @@
+[
+  {
+    "is_pure_awk": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "웨펀마스터",
+    "awk_id": "4ec01f4ae3728c080f28a72213b6df10",
+    "awk_name": "검성"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "웨펀마스터",
+    "awk_id": "80ec67d0356defa46a989914caca5820",
+    "awk_name": "검신"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "소울브링어",
+    "awk_id": "981d675414f83b926db5f54e5347eec0",
+    "awk_name": "소울테이커"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "소울브링어",
+    "awk_id": "8022a99e29b5e4845985fe1d79a233f3",
+    "awk_name": "다크로드"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "버서커",
+    "awk_id": "460822c3780a9bc3fbe9485cc89c44a4",
+    "awk_name": "헬벤터"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "버서커",
+    "awk_id": "15ce2751ab9c8302f39636cdb7c3dcfa",
+    "awk_name": "블러드 이블"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "아수라",
+    "awk_id": "faf8fc6f0cd4c0f84f0035e23bd4fa19",
+    "awk_name": "대암흑천"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "아수라",
+    "awk_id": "64bbd751c0fcae0e74758b871a2296c1",
+    "awk_name": "인다라천"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "검귀",
+    "awk_id": "a427ec3e94087c64cb4144379c3a0d59",
+    "awk_name": "야차"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "검귀",
+    "awk_id": "3ff5b661925ac59d1ca290b05ca914cc",
+    "awk_name": "악귀나찰"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a7a059ebe9e6054c0644b40ef316d6e9",
+    "class_name": "격투가(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "넨마스터",
+    "awk_id": "4ec01f4ae3728c080f28a72213b6df10",
+    "awk_name": "백화요란"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a7a059ebe9e6054c0644b40ef316d6e9",
+    "class_name": "격투가(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "넨마스터",
+    "awk_id": "80ec67d0356defa46a989914caca5820",
+    "awk_name": "염제 폐월수화"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a7a059ebe9e6054c0644b40ef316d6e9",
+    "class_name": "격투가(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "스트라이커",
+    "awk_id": "981d675414f83b926db5f54e5347eec0",
+    "awk_name": "챔피언"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a7a059ebe9e6054c0644b40ef316d6e9",
+    "class_name": "격투가(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "스트라이커",
+    "awk_id": "8022a99e29b5e4845985fe1d79a233f3",
+    "awk_name": "카이저"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a7a059ebe9e6054c0644b40ef316d6e9",
+    "class_name": "격투가(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "스트리트파이터",
+    "awk_id": "460822c3780a9bc3fbe9485cc89c44a4",
+    "awk_name": "독왕"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a7a059ebe9e6054c0644b40ef316d6e9",
+    "class_name": "격투가(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "스트리트파이터",
+    "awk_id": "15ce2751ab9c8302f39636cdb7c3dcfa",
+    "awk_name": "용독문주"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a7a059ebe9e6054c0644b40ef316d6e9",
+    "class_name": "격투가(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "그래플러",
+    "awk_id": "faf8fc6f0cd4c0f84f0035e23bd4fa19",
+    "awk_name": "토네이도"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a7a059ebe9e6054c0644b40ef316d6e9",
+    "class_name": "격투가(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "그래플러",
+    "awk_id": "64bbd751c0fcae0e74758b871a2296c1",
+    "awk_name": "얼티밋 디바"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "레인저",
+    "awk_id": "4ec01f4ae3728c080f28a72213b6df10",
+    "awk_name": "데스페라도"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "레인저",
+    "awk_id": "80ec67d0356defa46a989914caca5820",
+    "awk_name": "레이븐"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "런처",
+    "awk_id": "981d675414f83b926db5f54e5347eec0",
+    "awk_name": "블래스터"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "런처",
+    "awk_id": "8022a99e29b5e4845985fe1d79a233f3",
+    "awk_name": "디스트로이어"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "메카닉",
+    "awk_id": "460822c3780a9bc3fbe9485cc89c44a4",
+    "awk_name": "마이스터"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "메카닉",
+    "awk_id": "15ce2751ab9c8302f39636cdb7c3dcfa",
+    "awk_name": "프라임"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "스핏파이어",
+    "awk_id": "faf8fc6f0cd4c0f84f0035e23bd4fa19",
+    "awk_name": "제네럴"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "스핏파이어",
+    "awk_id": "64bbd751c0fcae0e74758b871a2296c1",
+    "awk_name": "커맨더"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "어썰트",
+    "awk_id": "a427ec3e94087c64cb4144379c3a0d59",
+    "awk_name": "인트루더"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "어썰트",
+    "awk_id": "3ff5b661925ac59d1ca290b05ca914cc",
+    "awk_name": "엑스마키나"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "엘레멘탈마스터",
+    "awk_id": "4ec01f4ae3728c080f28a72213b6df10",
+    "awk_name": "아크메이지"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "엘레멘탈마스터",
+    "awk_id": "80ec67d0356defa46a989914caca5820",
+    "awk_name": "오버마인드"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "소환사",
+    "awk_id": "981d675414f83b926db5f54e5347eec0",
+    "awk_name": "문 엠프레스"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "소환사",
+    "awk_id": "8022a99e29b5e4845985fe1d79a233f3",
+    "awk_name": "이클립스"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "배틀메이지",
+    "awk_id": "460822c3780a9bc3fbe9485cc89c44a4",
+    "awk_name": "벨라트릭스"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "배틀메이지",
+    "awk_id": "15ce2751ab9c8302f39636cdb7c3dcfa",
+    "awk_name": "아슈타르테"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "마도학자",
+    "awk_id": "faf8fc6f0cd4c0f84f0035e23bd4fa19",
+    "awk_name": "트릭스터"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "마도학자",
+    "awk_id": "64bbd751c0fcae0e74758b871a2296c1",
+    "awk_name": "지니위즈"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "인챈트리스",
+    "awk_id": "a427ec3e94087c64cb4144379c3a0d59",
+    "awk_name": "블랙 메이든"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "인챈트리스",
+    "awk_id": "3ff5b661925ac59d1ca290b05ca914cc",
+    "awk_name": "헤카테"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "f6a4ad30555b99b499c07835f87ce522",
+    "class_name": "프리스트(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "크루세이더",
+    "awk_id": "4ec01f4ae3728c080f28a72213b6df10",
+    "awk_name": "홀리오더"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "f6a4ad30555b99b499c07835f87ce522",
+    "class_name": "프리스트(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "크루세이더",
+    "awk_id": "80ec67d0356defa46a989914caca5820",
+    "awk_name": "세인트"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "f6a4ad30555b99b499c07835f87ce522",
+    "class_name": "프리스트(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "인파이터",
+    "awk_id": "981d675414f83b926db5f54e5347eec0",
+    "awk_name": "갓핸드"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "f6a4ad30555b99b499c07835f87ce522",
+    "class_name": "프리스트(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "인파이터",
+    "awk_id": "8022a99e29b5e4845985fe1d79a233f3",
+    "awk_name": "저스티스"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "f6a4ad30555b99b499c07835f87ce522",
+    "class_name": "프리스트(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "퇴마사",
+    "awk_id": "460822c3780a9bc3fbe9485cc89c44a4",
+    "awk_name": "용투사"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "f6a4ad30555b99b499c07835f87ce522",
+    "class_name": "프리스트(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "퇴마사",
+    "awk_id": "15ce2751ab9c8302f39636cdb7c3dcfa",
+    "awk_name": "태을선인"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "f6a4ad30555b99b499c07835f87ce522",
+    "class_name": "프리스트(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "어벤저",
+    "awk_id": "faf8fc6f0cd4c0f84f0035e23bd4fa19",
+    "awk_name": "둠스가디언"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "f6a4ad30555b99b499c07835f87ce522",
+    "class_name": "프리스트(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "어벤저",
+    "awk_id": "64bbd751c0fcae0e74758b871a2296c1",
+    "awk_name": "이모탈"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "944b9aab492c15a8474f96947ceeb9e4",
+    "class_name": "거너(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "레인저",
+    "awk_id": "4ec01f4ae3728c080f28a72213b6df10",
+    "awk_name": "블러디아"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "944b9aab492c15a8474f96947ceeb9e4",
+    "class_name": "거너(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "레인저",
+    "awk_id": "80ec67d0356defa46a989914caca5820",
+    "awk_name": "크림슨로제"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "944b9aab492c15a8474f96947ceeb9e4",
+    "class_name": "거너(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "런처",
+    "awk_id": "981d675414f83b926db5f54e5347eec0",
+    "awk_name": "헤비배럴"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "944b9aab492c15a8474f96947ceeb9e4",
+    "class_name": "거너(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "런처",
+    "awk_id": "8022a99e29b5e4845985fe1d79a233f3",
+    "awk_name": "스톰트루퍼"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "944b9aab492c15a8474f96947ceeb9e4",
+    "class_name": "거너(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "메카닉",
+    "awk_id": "460822c3780a9bc3fbe9485cc89c44a4",
+    "awk_name": "메탈하트"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "944b9aab492c15a8474f96947ceeb9e4",
+    "class_name": "거너(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "메카닉",
+    "awk_id": "15ce2751ab9c8302f39636cdb7c3dcfa",
+    "awk_name": "옵티머스"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "944b9aab492c15a8474f96947ceeb9e4",
+    "class_name": "거너(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "스핏파이어",
+    "awk_id": "faf8fc6f0cd4c0f84f0035e23bd4fa19",
+    "awk_name": "발키리"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "944b9aab492c15a8474f96947ceeb9e4",
+    "class_name": "거너(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "스핏파이어",
+    "awk_id": "64bbd751c0fcae0e74758b871a2296c1",
+    "awk_name": "프레이야"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ddc49e9ad1ff72a00b53c6cff5b1e920",
+    "class_name": "도적",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "로그",
+    "awk_id": "4ec01f4ae3728c080f28a72213b6df10",
+    "awk_name": "실버문"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ddc49e9ad1ff72a00b53c6cff5b1e920",
+    "class_name": "도적",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "로그",
+    "awk_id": "80ec67d0356defa46a989914caca5820",
+    "awk_name": "알키오네"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ddc49e9ad1ff72a00b53c6cff5b1e920",
+    "class_name": "도적",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "사령술사",
+    "awk_id": "981d675414f83b926db5f54e5347eec0",
+    "awk_name": "데스브링어"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ddc49e9ad1ff72a00b53c6cff5b1e920",
+    "class_name": "도적",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "사령술사",
+    "awk_id": "8022a99e29b5e4845985fe1d79a233f3",
+    "awk_name": "타나토스"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ddc49e9ad1ff72a00b53c6cff5b1e920",
+    "class_name": "도적",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "쿠노이치",
+    "awk_id": "460822c3780a9bc3fbe9485cc89c44a4",
+    "awk_name": "이즈나비"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ddc49e9ad1ff72a00b53c6cff5b1e920",
+    "class_name": "도적",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "쿠노이치",
+    "awk_id": "15ce2751ab9c8302f39636cdb7c3dcfa",
+    "awk_name": "시라누이"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ddc49e9ad1ff72a00b53c6cff5b1e920",
+    "class_name": "도적",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "섀도우댄서",
+    "awk_id": "faf8fc6f0cd4c0f84f0035e23bd4fa19",
+    "awk_name": "나이트메어"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ddc49e9ad1ff72a00b53c6cff5b1e920",
+    "class_name": "도적",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "섀도우댄서",
+    "awk_id": "64bbd751c0fcae0e74758b871a2296c1",
+    "awk_name": "그림리퍼"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ca0f0e0e9e1d55b5f9955b03d9dd213c",
+    "class_name": "격투가(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "넨마스터",
+    "awk_id": "4ec01f4ae3728c080f28a72213b6df10",
+    "awk_name": "광호제"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ca0f0e0e9e1d55b5f9955b03d9dd213c",
+    "class_name": "격투가(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "넨마스터",
+    "awk_id": "80ec67d0356defa46a989914caca5820",
+    "awk_name": "염황 광풍제월"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ca0f0e0e9e1d55b5f9955b03d9dd213c",
+    "class_name": "격투가(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "스트라이커",
+    "awk_id": "981d675414f83b926db5f54e5347eec0",
+    "awk_name": "무극"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ca0f0e0e9e1d55b5f9955b03d9dd213c",
+    "class_name": "격투가(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "스트라이커",
+    "awk_id": "8022a99e29b5e4845985fe1d79a233f3",
+    "awk_name": "패황"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ca0f0e0e9e1d55b5f9955b03d9dd213c",
+    "class_name": "격투가(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "스트리트파이터",
+    "awk_id": "460822c3780a9bc3fbe9485cc89c44a4",
+    "awk_name": "천수나한"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ca0f0e0e9e1d55b5f9955b03d9dd213c",
+    "class_name": "격투가(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "스트리트파이터",
+    "awk_id": "15ce2751ab9c8302f39636cdb7c3dcfa",
+    "awk_name": "명왕"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ca0f0e0e9e1d55b5f9955b03d9dd213c",
+    "class_name": "격투가(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "그래플러",
+    "awk_id": "faf8fc6f0cd4c0f84f0035e23bd4fa19",
+    "awk_name": "자이언트"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "ca0f0e0e9e1d55b5f9955b03d9dd213c",
+    "class_name": "격투가(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "그래플러",
+    "awk_id": "64bbd751c0fcae0e74758b871a2296c1",
+    "awk_name": "그랜드 마스터"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "엘레멘탈 바머",
+    "awk_id": "4ec01f4ae3728c080f28a72213b6df10",
+    "awk_name": "워록"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "엘레멘탈 바머",
+    "awk_id": "80ec67d0356defa46a989914caca5820",
+    "awk_name": "오블리비언"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "빙결사",
+    "awk_id": "981d675414f83b926db5f54e5347eec0",
+    "awk_name": "프로즌하트"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "빙결사",
+    "awk_id": "8022a99e29b5e4845985fe1d79a233f3",
+    "awk_name": "이터널"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "블러드 메이지",
+    "awk_id": "460822c3780a9bc3fbe9485cc89c44a4",
+    "awk_name": "뱀파이어"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "블러드 메이지",
+    "awk_id": "15ce2751ab9c8302f39636cdb7c3dcfa",
+    "awk_name": "뱀파이어 로드"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "스위프트 마스터",
+    "awk_id": "faf8fc6f0cd4c0f84f0035e23bd4fa19",
+    "awk_name": "스톰브링어"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "스위프트 마스터",
+    "awk_id": "64bbd751c0fcae0e74758b871a2296c1",
+    "awk_name": "아이올로스"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "디멘션워커",
+    "awk_id": "a427ec3e94087c64cb4144379c3a0d59",
+    "awk_name": "이레귤러"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "디멘션워커",
+    "awk_id": "3ff5b661925ac59d1ca290b05ca914cc",
+    "awk_name": "어센션"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "17e417b31686389eebff6d754c3401ea",
+    "class_name": "다크나이트",
+    "adv_id": "4fdee159d5aa8874a1459861ced676ec",
+    "adv_name": "자각1",
+    "awk_id": "da6a126f45370e1a4cbbe8823c6c35be",
+    "awk_name": "자각2"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "b522a95d819a5559b775deb9a490e49a",
+    "class_name": "크리에이터",
+    "adv_id": "4fdee159d5aa8874a1459861ced676ec",
+    "adv_name": "자각1",
+    "awk_id": "da6a126f45370e1a4cbbe8823c6c35be",
+    "awk_name": "자각2"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "소드마스터",
+    "awk_id": "4ec01f4ae3728c080f28a72213b6df10",
+    "awk_name": "노블레스"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "소드마스터",
+    "awk_id": "80ec67d0356defa46a989914caca5820",
+    "awk_name": "마제스티"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "다크템플러",
+    "awk_id": "981d675414f83b926db5f54e5347eec0",
+    "awk_name": "암제"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "다크템플러",
+    "awk_id": "8022a99e29b5e4845985fe1d79a233f3",
+    "awk_name": "네메시스"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "데몬슬레이어",
+    "awk_id": "460822c3780a9bc3fbe9485cc89c44a4",
+    "awk_name": "검마"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "데몬슬레이어",
+    "awk_id": "15ce2751ab9c8302f39636cdb7c3dcfa",
+    "awk_name": "디어사이드"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "베가본드",
+    "awk_id": "faf8fc6f0cd4c0f84f0035e23bd4fa19",
+    "awk_name": "검호"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "베가본드",
+    "awk_id": "64bbd751c0fcae0e74758b871a2296c1",
+    "awk_name": "검제"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "블레이드",
+    "awk_id": "a427ec3e94087c64cb4144379c3a0d59",
+    "awk_name": "리벨리온"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "블레이드",
+    "awk_id": "3ff5b661925ac59d1ca290b05ca914cc",
+    "awk_name": "벤데타"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0ee8fa5dc525c1a1f23fc6911e921e4a",
+    "class_name": "나이트",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "엘븐나이트",
+    "awk_id": "4ec01f4ae3728c080f28a72213b6df10",
+    "awk_name": "피스메이커"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0ee8fa5dc525c1a1f23fc6911e921e4a",
+    "class_name": "나이트",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "엘븐나이트",
+    "awk_id": "80ec67d0356defa46a989914caca5820",
+    "awk_name": "가이아"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0ee8fa5dc525c1a1f23fc6911e921e4a",
+    "class_name": "나이트",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "카오스",
+    "awk_id": "981d675414f83b926db5f54e5347eec0",
+    "awk_name": "마왕"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0ee8fa5dc525c1a1f23fc6911e921e4a",
+    "class_name": "나이트",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "카오스",
+    "awk_id": "8022a99e29b5e4845985fe1d79a233f3",
+    "awk_name": "마신"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0ee8fa5dc525c1a1f23fc6911e921e4a",
+    "class_name": "나이트",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "팔라딘",
+    "awk_id": "460822c3780a9bc3fbe9485cc89c44a4",
+    "awk_name": "센티넬"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0ee8fa5dc525c1a1f23fc6911e921e4a",
+    "class_name": "나이트",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "팔라딘",
+    "awk_id": "15ce2751ab9c8302f39636cdb7c3dcfa",
+    "awk_name": "세이비어"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0ee8fa5dc525c1a1f23fc6911e921e4a",
+    "class_name": "나이트",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "드래곤나이트",
+    "awk_id": "faf8fc6f0cd4c0f84f0035e23bd4fa19",
+    "awk_name": "타이런트"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0ee8fa5dc525c1a1f23fc6911e921e4a",
+    "class_name": "나이트",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "드래곤나이트",
+    "awk_id": "64bbd751c0fcae0e74758b871a2296c1",
+    "awk_name": "드레드노트"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3deb7be5f01953ac8b1ecaa1e25e0420",
+    "class_name": "마창사",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "뱅가드",
+    "awk_id": "4ec01f4ae3728c080f28a72213b6df10",
+    "awk_name": "레버넌트"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3deb7be5f01953ac8b1ecaa1e25e0420",
+    "class_name": "마창사",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "뱅가드",
+    "awk_id": "80ec67d0356defa46a989914caca5820",
+    "awk_name": "워로드"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3deb7be5f01953ac8b1ecaa1e25e0420",
+    "class_name": "마창사",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "듀얼리스트",
+    "awk_id": "981d675414f83b926db5f54e5347eec0",
+    "awk_name": "하이랜더"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3deb7be5f01953ac8b1ecaa1e25e0420",
+    "class_name": "마창사",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "듀얼리스트",
+    "awk_id": "8022a99e29b5e4845985fe1d79a233f3",
+    "awk_name": "듀란달"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3deb7be5f01953ac8b1ecaa1e25e0420",
+    "class_name": "마창사",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "드래고니안 랜서",
+    "awk_id": "460822c3780a9bc3fbe9485cc89c44a4",
+    "awk_name": "레비아탄"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3deb7be5f01953ac8b1ecaa1e25e0420",
+    "class_name": "마창사",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "드래고니안 랜서",
+    "awk_id": "15ce2751ab9c8302f39636cdb7c3dcfa",
+    "awk_name": "제노사이더"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3deb7be5f01953ac8b1ecaa1e25e0420",
+    "class_name": "마창사",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "다크 랜서",
+    "awk_id": "faf8fc6f0cd4c0f84f0035e23bd4fa19",
+    "awk_name": "램페이저"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "3deb7be5f01953ac8b1ecaa1e25e0420",
+    "class_name": "마창사",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "다크 랜서",
+    "awk_id": "64bbd751c0fcae0e74758b871a2296c1",
+    "awk_name": "에레보스"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0c1b401bb09241570d364420b3ba3fd7",
+    "class_name": "프리스트(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "크루세이더",
+    "awk_id": "4ec01f4ae3728c080f28a72213b6df10",
+    "awk_name": "에반젤리스트"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0c1b401bb09241570d364420b3ba3fd7",
+    "class_name": "프리스트(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "크루세이더",
+    "awk_id": "80ec67d0356defa46a989914caca5820",
+    "awk_name": "세라핌"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0c1b401bb09241570d364420b3ba3fd7",
+    "class_name": "프리스트(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "이단심판관",
+    "awk_id": "981d675414f83b926db5f54e5347eec0",
+    "awk_name": "헬카이트"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0c1b401bb09241570d364420b3ba3fd7",
+    "class_name": "프리스트(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "이단심판관",
+    "awk_id": "8022a99e29b5e4845985fe1d79a233f3",
+    "awk_name": "인페르노"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0c1b401bb09241570d364420b3ba3fd7",
+    "class_name": "프리스트(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "무녀",
+    "awk_id": "460822c3780a9bc3fbe9485cc89c44a4",
+    "awk_name": "신녀"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0c1b401bb09241570d364420b3ba3fd7",
+    "class_name": "프리스트(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "무녀",
+    "awk_id": "15ce2751ab9c8302f39636cdb7c3dcfa",
+    "awk_name": "천선낭랑"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0c1b401bb09241570d364420b3ba3fd7",
+    "class_name": "프리스트(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "미스트리스",
+    "awk_id": "faf8fc6f0cd4c0f84f0035e23bd4fa19",
+    "awk_name": "신세이어"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "0c1b401bb09241570d364420b3ba3fd7",
+    "class_name": "프리스트(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "미스트리스",
+    "awk_id": "64bbd751c0fcae0e74758b871a2296c1",
+    "awk_name": "리디머"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "986c2b3d72ee0e4a0b7fcfbe786d4e02",
+    "class_name": "총검사",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "히트맨",
+    "awk_id": "4ec01f4ae3728c080f28a72213b6df10",
+    "awk_name": "빅보스"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "986c2b3d72ee0e4a0b7fcfbe786d4e02",
+    "class_name": "총검사",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "히트맨",
+    "awk_id": "80ec67d0356defa46a989914caca5820",
+    "awk_name": "갓파더"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "986c2b3d72ee0e4a0b7fcfbe786d4e02",
+    "class_name": "총검사",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "요원",
+    "awk_id": "981d675414f83b926db5f54e5347eec0",
+    "awk_name": "인포서"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "986c2b3d72ee0e4a0b7fcfbe786d4e02",
+    "class_name": "총검사",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "요원",
+    "awk_id": "8022a99e29b5e4845985fe1d79a233f3",
+    "awk_name": "레퀴엠"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "986c2b3d72ee0e4a0b7fcfbe786d4e02",
+    "class_name": "총검사",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "트러블 슈터",
+    "awk_id": "460822c3780a9bc3fbe9485cc89c44a4",
+    "awk_name": "와일드 카드"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "986c2b3d72ee0e4a0b7fcfbe786d4e02",
+    "class_name": "총검사",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "트러블 슈터",
+    "awk_id": "15ce2751ab9c8302f39636cdb7c3dcfa",
+    "awk_name": "언터처블"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "986c2b3d72ee0e4a0b7fcfbe786d4e02",
+    "class_name": "총검사",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "스페셜리스트",
+    "awk_id": "faf8fc6f0cd4c0f84f0035e23bd4fa19",
+    "awk_name": "코어 마스터"
+  },
+  {
+    "is_pure_awk": true,
+    "class_id": "986c2b3d72ee0e4a0b7fcfbe786d4e02",
+    "class_name": "총검사",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "스페셜리스트",
+    "awk_id": "64bbd751c0fcae0e74758b871a2296c1",
+    "awk_name": "패스파인더"
+  }
+]
