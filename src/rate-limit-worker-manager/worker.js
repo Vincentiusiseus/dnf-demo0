@@ -19,5 +19,5 @@ require('ts-node').register(tsconfigPaths);
  * 
  * `new Worker(..., { argv: [...] })` 같은 경우는 폴더 생성되지 않음.
  */
-const worker_fp = "worker_fp" in process.env ? process.env["worker_fp"] : path.resolve(__dirname, './worker.ts')
+const worker_fp = "worker_fp" in process.env ? process.env["worker_fp"] : path.resolve(__dirname, './base-worker.ts')
 require(worker_fp);
