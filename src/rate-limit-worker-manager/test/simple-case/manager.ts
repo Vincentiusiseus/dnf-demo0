@@ -50,18 +50,25 @@ function parseArgs() {
             alias: "i",
             type: "number",
             demandOption: true,
-            description: "Interval in seconds"
+            description: "Interval to track token rate (in seconds)"
         })
         .option("worker_interval", {
             alias: "wi",
             type: "number",
-            description: "Interval between starting a new worker (in ms)"
+            default: 0,
+            description: "Interval between starting a new worker (in ms). Default: 0"
         })
         .option("count", {
             alias: "c",
             type: "number",
             default: 100,
             description: "Arg count max. Default: 100"
+        })
+        .option("worker-wait", {
+            alias: "ww",
+            type: "array",
+            default: [0,0],
+            description: "Worker wait min and max in seconds. Default: `--ww 0 0`"
         })
         .parse()
     

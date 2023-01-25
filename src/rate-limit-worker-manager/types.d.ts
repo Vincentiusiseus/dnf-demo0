@@ -7,6 +7,7 @@ export type Handler<ResData, ResError> = {
 }
 export type Options = {
     worker_start_interval_ms:number
+    worker_wait_range:[number,number]
 }
 export type WorkerResponseSuccess<ResData> = { data:ResData }
 export type WorkerResponseError<Error> = { error:Error }

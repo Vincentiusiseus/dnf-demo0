@@ -1,6 +1,9 @@
 // Node libs
-import { Worker } from "worker_threads"
+import { setEnvironmentData, Worker } from "worker_threads"
 import * as path from "path"
+
+// NPM libs
+import * as _ from "lodash"
 
 // My libs
 import { TokenBucket } from "./token-bucket"
@@ -8,6 +11,11 @@ import { main_logger as log } from "./logger"
 
 // My types
 import type { Handler, Options, WorkerResponse, WorkerResponseError, WorkerResponseSuccess } from "./types"
+
+const option_defaults:Options = {
+    worker_start_interval_ms: 500,
+    worker_wait_range: [0,0]
+}
 
 export class RatelimitWorkerManager<MessageData=any, ResData=any, ResError=any> {
     workers:{[id:number]:Worker} = {}
@@ -25,8 +33,10 @@ export class RatelimitWorkerManager<MessageData=any, ResData=any, ResError=any> 
         public iterators:AsyncIterator<MessageData>,
         public max_tokens:number,
         public max_time_s:number,
-        public options:Options = { worker_start_interval_ms: 500 }
+        public options:Options
     ) {
+        _.defaultsDeep(this.options, option_defaults)
+
         this.token_bucket = new TokenBucket(max_tokens, max_time_s)
     }
 
@@ -114,6 +124,7 @@ export class RatelimitWorkerManager<MessageData=any, ResData=any, ResError=any> 
     }
     
     async startNewWorker() {
+        setEnvironmentData("worker_wait_range", this.options.worker_wait_range)
         const worker = new Worker(path.join(__dirname, "./worker.js"), { env: { worker_fp: this.worker_file_path } })
         this.workers_started_count++
         log.info(`Started worker. Count: ${this.workers_started_count}`, worker.threadId)
