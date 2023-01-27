@@ -115,5 +115,5 @@ export async function getLastPage():Promise<number> {
         if(output.first_zero_power == 0) break
         power = output.last_non_zero_power
     }
-    return output.page
+    return output.start_page
 }
