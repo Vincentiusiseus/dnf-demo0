@@ -12,6 +12,8 @@ POST: https://dundam.xyz/dat/dealerRankingData.jsp?page=1&job={각성이름}&bas
 
 각성이름 = "眞 " + {직업이름}
 
+한마디로 직업이름, 각성이름 둘다 웹사이트에서 보이는대로.
+
 type
   - 7: 랭킹 순위
   - 8: 명성
