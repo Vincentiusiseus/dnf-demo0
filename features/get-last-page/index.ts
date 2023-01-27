@@ -2,10 +2,18 @@
 import yargs from "yargs"
 
 // My libs
-import { classGenerator, advGenerator } from "~/src/df-api"
+import { classGenerator, advGenerator, awkGenerator } from "~/src/df-api"
+import { getLastPage as getLastPageDFForum } from "../dnf-forum-scrape/lib"
+import { getLastPage as getLastPageDundam } from "../dundam-scrape/get-last-page"
+import { getLastPage as getLastPageDunfaoff } from "../dunfaoff-scrape/get-last-page"
+
+// My types
+import type { Payload } from "../dunfaoff-scrape/load-page"
 
 class Main {
-    parsed:any
+    site:string
+    class_name:string
+    adv_name:string
 
     constructor() {
 
@@ -24,7 +32,7 @@ class Main {
      * 인수와 같은 타입을 반환.
      */
     parseArgs() {
-        this.parsed = yargs(process.argv)
+        const parsed_site = yargs(process.argv)
             .option("site", {
                 alias: "s",
                 description: "Target site",
@@ -33,8 +41,9 @@ class Main {
             })
             .parse()
         
-        const site = this.parsed["site"]
-        if(site == "df-forum") {
+        // @ts-ignore
+        this.site = parsed_site["site"]
+        if(this.site == "df-forum") {
             return
         }
 
@@ -44,39 +53,112 @@ class Main {
         const parsed_class_name = yargs(process.argv)
             .option("class-name", {
                 alias: "c",
-                description: "One of 16 class names",
+                description: "One of 16 class names + all",
                 demandOption: true,
-                choices: class_names
+                choices: [...class_names, "all"]
             })
             .parse()
 
         // @ts-ignore
-        const class_name = parsed_class_name["class-name"]
+        this.class_name = parsed_class_name["class-name"]
 
-        const all_advs = Array.from(advGenerator())
-        const class_advs = all_advs.filter(entry => entry.class_name == class_name)
-        // @ts-ignore
-        const adv_names = class_advs.map(entry => entry.adv_name)
-
-        if(["크리에이터", "다크나이트"].includes(class_name)) {
+        if(this.class_name == "all") {
             return
         }
 
-        const parsed_adv_name = yargs(process.argv)
-            .option("adv-name", {
-                alias: "a",
-                description: "One of 4~5 Advancements from a class",
-                demandOption: true,
-                choices: adv_names
-            })
-            .parse()
-        
-        console.log(parsed_adv_name)
+        const all_advs = Array.from(advGenerator())
+        const class_advs = all_advs.filter(entry => entry.class_name == this.class_name)
+        // @ts-ignore
+        const adv_names = class_advs.map(entry => entry.adv_name)
+
+        if(["크리에이터", "다크나이트"].includes(this.class_name)) {
+            // Do nothing
+        }
+        else {
+            const parsed_adv_name = yargs(process.argv)
+                .option("adv-name", {
+                    alias: "a",
+                    description: "One of 4~5 Advancements from a class",
+                    demandOption: true,
+                    choices: adv_names
+                })
+                .parse()
+            //@ts-ignore
+            this.adv_name = parsed_adv_name["adv-name"]
+        }
+    }
+
+    async requestForAdv(_class_name:string, adv_name:string) {
+        if(this.site == "dundam") {
+            const is_special = ["크리에이터", "다크나이트"].includes(_class_name)
+            const class_name = is_special ? "외전" : _class_name
+            const neo_awk_name = "眞 " + (is_special ? this.class_name : adv_name)
+
+            console.log(class_name, neo_awk_name)
+            return await getLastPageDundam(class_name, neo_awk_name)
+        }
+        else if(this.site == "dunfaoff") {
+            const is_special = ["크리에이터", "다크나이트"].includes(_class_name)
+            let awk_name:string
+            if(is_special) awk_name = _class_name
+            else {
+                //@ts-ignore
+                const awk_names = Array.from(awkGenerator()).filter(entry => entry.adv_name == adv_name && entry.class_name == _class_name).map(entry => entry.awk_name)
+                console.log(awk_names)
+                //@ts-ignore
+                awk_name = awk_names.slice(-2)[0]
+            }
+
+            const payload:Payload = {
+                gender: this.class_name.includes("남") ? "M" :  this.class_name.includes("(여)") ? "F" : "",
+                isHoly: false,
+                jobGrowName: awk_name,
+                jobName: this.class_name
+            }
+
+            return await getLastPageDunfaoff(payload)
+        }
     }
 
     async start() {
         this.parseArgs()
-        console.log(this.parsed)
+        console.log(this.site, this.class_name, this.adv_name)
+
+        if(this.site == "df-forum") {
+            await getLastPageDFForum()
+            return
+        }
+
+        let params:any[] = []
+        /**
+         * 2023-01-27 16:23
+         * TODO: 아 또 버퍼 까먹음;;;
+         * Iterator에 "include buffer", buffer_only 이런 옵션도 넣어야 겠음.
+         */
+        if(this.class_name == "all") {
+            const class_names = Array.from(classGenerator()).map(entry => entry.class_name)
+            for(const class_name of class_names) {
+                const advs = Array.from(advGenerator()).filter(entry => entry.class_name == class_name)
+                for(const adv of advs) {
+                    //@ts-ignore
+                    const adv_name = adv.adv_name
+                    params.push([class_name, adv_name])
+                }
+            }
+        }
+        else {
+            params.push([this.class_name, this.adv_name])
+        }
+
+        const result:any = []
+        for(const param of params) {
+            //@ts-ignore
+            const last_page = await this.requestForAdv(...param)
+            result.push({ param, last_page })
+            console.log(result)
+        }
+
+        console.log(result)
     }
 }
 

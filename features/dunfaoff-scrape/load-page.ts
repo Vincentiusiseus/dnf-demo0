@@ -17,7 +17,7 @@ export type Payload = {
     jobName: string
     jobGrowName: string
     isHoly: boolean
-    gender: "M" | "F"
+    gender: "M" | "F" | ""
 }
 
 /**
