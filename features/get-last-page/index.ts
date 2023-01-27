@@ -154,18 +154,13 @@ class Main {
          * Iterator에 "include buffer", buffer_only 이런 옵션도 넣어야 겠음.
          */
         if(this.class_name == "all") {
-            let ignore_flag:boolean = true
             const class_names = Array.from(classGenerator()).map(entry => entry.class_name)
             for(const class_name of class_names) {
                 const advs = Array.from(advGenerator()).filter(entry => entry.class_name == class_name)
                 for(const adv of advs) {
                     //@ts-ignore
                     const adv_name = adv.adv_name
-
-                    if(ignore_flag == false) params.push([class_name, adv_name])
-                    if(class_name == "프리스트(남)" && adv_name == "어벤저") {
-                        ignore_flag = false
-                    }
+                    params.push([class_name, adv_name])
                 }
             }
         }
