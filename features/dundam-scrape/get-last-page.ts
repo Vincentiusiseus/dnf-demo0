@@ -52,4 +52,4 @@ async function main() {
      */
     await getLastPage("귀검사(남)", "眞 웨펀마스터")
 }
-main()
+// main()

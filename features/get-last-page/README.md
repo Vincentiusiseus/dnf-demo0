@@ -98,3 +98,50 @@ Dunfaoff 2023-01-27 16:39
 ]
 ...에러...
 ```
+
+어벵이 이후:
+
+```
+[
+  { param: [ '거너(여)', '레인저' ], last_page: 3447 },
+  { param: [ '거너(여)', '런처' ], last_page: 2625 },
+  { param: [ '거너(여)', '메카닉' ], last_page: 2036 },
+  { param: [ '거너(여)', '스핏파이어' ], last_page: 3772 },
+  { param: [ '도적', '로그' ], last_page: 1812 },
+  { param: [ '도적', '사령술사' ], last_page: 1663 },
+  { param: [ '도적', '쿠노이치' ], last_page: 1487 },
+  { param: [ '도적', '섀도우댄서' ], last_page: 1364 },
+  { param: [ '격투가(남)', '넨마스터' ], last_page: 3029 },
+  { param: [ '격투가(남)', '스트라이커' ], last_page: 2036 },
+  { param: [ '격투가(남)', '스트리트파이터' ], last_page: 1114 },
+  { param: [ '격투가(남)', '그래플러' ], last_page: 1239 },
+  { param: [ '마법사(남)', '엘레멘탈 바머' ], last_page: 1533 },
+  { param: [ '마법사(남)', '빙결사' ], last_page: 1741 },
+  { param: [ '마법사(남)', '블러드 메이지' ], last_page: 1721 },
+  { param: [ '마법사(남)', '스위프트 마스터' ], last_page: 2434 },
+  { param: [ '마법사(남)', '디멘션워커' ], last_page: 1368 },
+  { param: [ '다크나이트', '자각1' ], last_page: 1500 },
+  { param: [ '크리에이터', '자각1' ], last_page: 991 },
+  { param: [ '귀검사(여)', '소드마스터' ], last_page: 6940 },
+  { param: [ '귀검사(여)', '다크템플러' ], last_page: 5798 },
+  { param: [ '귀검사(여)', '데몬슬레이어' ], last_page: 4834 },
+  { param: [ '귀검사(여)', '베가본드' ], last_page: 8714 },
+  { param: [ '귀검사(여)', '블레이드' ], last_page: 9554 },
+  { param: [ '나이트', '엘븐나이트' ], last_page: 1031 },
+  { param: [ '나이트', '카오스' ], last_page: 2130 },
+  { param: [ '나이트', '팔라딘' ], last_page: 5062 },
+  { param: [ '나이트', '드래곤나이트' ], last_page: 2361 },
+  { param: [ '마창사', '뱅가드' ], last_page: 1537 },
+  { param: [ '마창사', '듀얼리스트' ], last_page: 991 },
+  { param: [ '마창사', '드래고니안 랜서' ], last_page: 1457 },
+  { param: [ '마창사', '다크 랜서' ], last_page: 2430 },
+  { param: [ '프리스트(여)', '크루세이더' ], last_page: 16978 },
+  { param: [ '프리스트(여)', '이단심판관' ], last_page: 2405 },
+  { param: [ '프리스트(여)', '무녀' ], last_page: 3078 },
+  { param: [ '프리스트(여)', '미스트리스' ], last_page: 2656 },
+  { param: [ '총검사', '히트맨' ], last_page: 1792 },
+  { param: [ '총검사', '요원' ], last_page: 3191 },
+  { param: [ '총검사', '트러블 슈터' ], last_page: 1485 },
+  { param: [ '총검사', '스페셜리스트' ], last_page: 792 }
+]
+```

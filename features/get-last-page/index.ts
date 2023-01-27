@@ -1,4 +1,5 @@
 // NPM libs
+import { AxiosError } from "axios"
 import yargs from "yargs"
 
 // My libs
@@ -116,7 +117,24 @@ class Main {
                 jobName: this.class_name
             }
 
-            return await getLastPageDunfaoff(payload)
+            let count = 0
+            let result:any = null
+            while(true) {
+                try {
+                    result = await getLastPageDunfaoff(payload)
+                }
+                catch(e) {
+                    if(e instanceof AxiosError && e.response.status == 500) {
+                        const MAX_COUNT = 5
+                        const WAIT_S = 10
+                        console.log(`Caught error code 500 for payload ${payload}. Wait ${WAIT_S} seconds just in case, and increment count ${++count}/${MAX_COUNT}`)
+                        await new Promise((res) => setTimeout(() => res(0), WAIT_S * 10000))
+                        if(count >= 5) throw e
+                    }
+                }
+                break
+            }
+            return result
         }
     }
 
@@ -136,19 +154,26 @@ class Main {
          * Iterator에 "include buffer", buffer_only 이런 옵션도 넣어야 겠음.
          */
         if(this.class_name == "all") {
+            let ignore_flag:boolean = true
             const class_names = Array.from(classGenerator()).map(entry => entry.class_name)
             for(const class_name of class_names) {
                 const advs = Array.from(advGenerator()).filter(entry => entry.class_name == class_name)
                 for(const adv of advs) {
                     //@ts-ignore
                     const adv_name = adv.adv_name
-                    params.push([class_name, adv_name])
+
+                    if(ignore_flag == false) params.push([class_name, adv_name])
+                    if(class_name == "프리스트(남)" && adv_name == "어벤저") {
+                        ignore_flag = false
+                    }
                 }
             }
         }
         else {
             params.push([this.class_name, this.adv_name])
         }
+
+        console.log(params)
 
         const result:any = []
         for(const param of params) {
