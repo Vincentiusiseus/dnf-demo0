@@ -46,7 +46,7 @@ export function * jobsDataGenerator(option?:Option) {
                 yield Object.assign({ is_pure_adv: true }, adv_output )
 
             let awk_node = awk_tree
-            while(awk_node.next != undefined) {
+            while(awk_node != undefined) {
                 const { jobGrowId: awk_id, jobGrowName: awk_name } = awk_node
                 const awk_next = awk_node.next
                 const awk_output = {
