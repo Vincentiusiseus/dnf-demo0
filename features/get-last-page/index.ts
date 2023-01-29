@@ -89,14 +89,14 @@ class Main {
         }
     }
 
-    async requestForAdv(_class_name:string, adv_name:string) {
+    async requestForAdv(_class_name:string, adv_name:string, is_buffer:boolean) {
         if(this.site == "dundam") {
             const is_special = ["크리에이터", "다크나이트"].includes(_class_name)
             const class_name = is_special ? "외전" : _class_name
             const neo_awk_name = "眞 " + (is_special ? this.class_name : adv_name)
 
             console.log(class_name, neo_awk_name)
-            return await getLastPageDundam(class_name, neo_awk_name)
+            return await getLastPageDundam(class_name, neo_awk_name, is_buffer)
         }
         else if(this.site == "dunfaoff") {
             const is_special = ["크리에이터", "다크나이트"].includes(_class_name)
@@ -112,7 +112,7 @@ class Main {
 
             const payload:Payload = {
                 gender: this.class_name.includes("남") ? "M" :  this.class_name.includes("(여)") ? "F" : "",
-                isHoly: false,
+                isHoly: is_buffer,
                 jobGrowName: awk_name,
                 jobName: this.class_name
             }
