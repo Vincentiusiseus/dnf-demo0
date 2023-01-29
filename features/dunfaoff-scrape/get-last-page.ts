@@ -5,6 +5,13 @@ import { scrapeCharData } from "./scrape"
 // My types
 import type { Payload } from "./load-page"
 
+export async function getPageData(payload:Payload, page:number) {
+    const response = await makeRequest(payload, page)
+    const html_content = response.data
+    const data = await scrapeCharData(html_content)
+    return data
+}
+
 export async function _getLastPage(start_page:number=1, payload:Payload):Promise<any> {
     let inc_page_flag = true
     let power = 0
@@ -62,6 +69,13 @@ async function main() {
      * 2023-01-27 12:38
      * `6768` ^^. 페이지당 10명. 6.7만 검신은 좀...
      */
-    await getLastPage(payload)
+    // await getLastPage(payload)
+    
+    payload.jobName = "마법사(여)"
+    payload.jobGrowName = "헤카테"
+    payload.gender = "F"
+    // payload.isHoly = true
+    // await getLastPage(payload)
+    console.log(await getPageData(payload, 1))
 }
-// main()
+main()
