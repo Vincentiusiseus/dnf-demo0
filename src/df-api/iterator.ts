@@ -8,8 +8,23 @@ type Option = {
     awk_only?: boolean
     include_json?: boolean
 }
+type ClassEntry = {
+    class_id:string
+    class_name:string
+    is_pure_class?:boolean
+}
+type AdvancementEntry = ClassEntry & {
+    adv_id: string
+    adv_name: string
+    is_pure_adv?:boolean
+}
+type AwakeningEntry = AdvancementEntry & {
+    awk_id:string
+    awk_name:string
+    is_pure_awk?:boolean
+}
 
-export function * jobsDataGenerator(option?:Option) {
+export function * jobsDataGenerator(option?:Option):Generator<ClassEntry|AdvancementEntry|AwakeningEntry> {
     const raw_content = fs.readFileSync(path.join(__dirname, "./data/jobs-res.json"), "utf-8")
     const res_data = JSON.parse(raw_content)
     const class_data = res_data.rows
@@ -20,7 +35,7 @@ export function * jobsDataGenerator(option?:Option) {
         const { jobId: class_id, jobName: class_name } = class_entry
         const advs = class_entry.rows
 
-        const class_output = {
+        const class_output:ClassEntry = {
             class_id,
             class_name,
         }
@@ -34,7 +49,7 @@ export function * jobsDataGenerator(option?:Option) {
             const { jobGrowId: adv_id, jobGrowName: adv_name } = adv
             const awk_tree = adv.next
 
-            const adv_output = {
+            const adv_output:AdvancementEntry = {
                 ...class_output,
                 adv_id,
                 adv_name,
@@ -49,7 +64,7 @@ export function * jobsDataGenerator(option?:Option) {
             while(awk_node != undefined) {
                 const { jobGrowId: awk_id, jobGrowName: awk_name } = awk_node
                 const awk_next = awk_node.next
-                const awk_output = {
+                const awk_output:AwakeningEntry = {
                     ...adv_output,
                     awk_id,
                     awk_name,
