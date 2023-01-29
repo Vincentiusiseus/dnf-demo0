@@ -84,4 +84,4 @@ async function main() {
     // await getLastPage("마법사(여)", "眞 인챈트리스", true)
     // await getLastPage("프리스트(남)", "眞 크루세이더", true)
 }
-main()
+// main()

@@ -4,6 +4,7 @@ import yargs from "yargs"
 
 // My libs
 import { classGenerator, advGenerator, awkGenerator } from "~/src/df-api"
+import { getAllParams } from "./lib"
 import { getLastPage as getLastPageDFForum } from "../dnf-forum-scrape/lib"
 import { getLastPage as getLastPageDundam } from "../dundam-scrape/get-last-page"
 import { getLastPage as getLastPageDunfaoff } from "../dunfaoff-scrape/get-last-page"
@@ -148,27 +149,21 @@ class Main {
         }
 
         let params:any[] = []
-        /**
-         * 2023-01-27 16:23
-         * TODO: 아 또 버퍼 까먹음;;;
-         * Iterator에 "include buffer", buffer_only 이런 옵션도 넣어야 겠음.
-         */
         if(this.class_name == "all") {
-            const class_names = Array.from(classGenerator()).map(entry => entry.class_name)
-            for(const class_name of class_names) {
-                const advs = Array.from(advGenerator()).filter(entry => entry.class_name == class_name)
-                for(const adv of advs) {
-                    //@ts-ignore
-                    const adv_name = adv.adv_name
-                    params.push([class_name, adv_name])
-                }
-            }
+            params = getAllParams()
         }
         else {
+            /**
+             * 2023-01-29 20:52
+             * TODO. Distinguish buffer for one-advancement command. Can be done after
+             * changing to inquirer.js however.
+             */
             params.push([this.class_name, this.adv_name])
         }
 
         console.log(params)
+
+        const start_dt = new Date()
 
         const result:any = []
         for(const param of params) {
@@ -176,6 +171,9 @@ class Main {
             const last_page = await this.requestForAdv(...param)
             result.push({ param, last_page })
             console.log(result)
+            const now = new Date()
+            const time_took_s = (now.getTime() - start_dt.getTime())/1000
+            console.log(`[${now.toISOString()}] Time took ${time_took_s}s.`)
         }
 
         console.log(result)

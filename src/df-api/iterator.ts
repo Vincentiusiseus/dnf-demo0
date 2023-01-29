@@ -2,10 +2,12 @@
 import * as fs from "fs"
 import * as path from "path"
 
-type Option = {
+type AdvOption = {
+    distinguish_buffer?:boolean
+}
+type Option = AdvOption & {
     class_only?: boolean
     adv_only?: boolean
-    distinguish_buffer?:boolean
     awk_only?: boolean
     include_json?: boolean
 }
@@ -98,8 +100,9 @@ export function * classGenerator() {
     yield* jobsDataGenerator({ class_only: true })
 }
 
-export function * advGenerator() {
-    yield* jobsDataGenerator({ adv_only: true })
+export function * advGenerator(option?:AdvOption):Generator<AdvancementEntry> {
+    //@ts-ignore
+    yield* jobsDataGenerator(Object.assign({ adv_only: true }, option))
 }
 
 export function * awkGenerator() {
