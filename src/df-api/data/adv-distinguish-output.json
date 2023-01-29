@@ -1,0 +1,530 @@
+[
+  {
+    "is_pure_adv": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "웨펀마스터",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "소울브링어",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "버서커",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "아수라",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "41f1cdc2ff58bb5fdc287be0db2a8df3",
+    "class_name": "귀검사(남)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "검귀",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "a7a059ebe9e6054c0644b40ef316d6e9",
+    "class_name": "격투가(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "넨마스터",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "a7a059ebe9e6054c0644b40ef316d6e9",
+    "class_name": "격투가(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "스트라이커",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "a7a059ebe9e6054c0644b40ef316d6e9",
+    "class_name": "격투가(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "스트리트파이터",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "a7a059ebe9e6054c0644b40ef316d6e9",
+    "class_name": "격투가(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "그래플러",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "레인저",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "런처",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "메카닉",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "스핏파이어",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "afdf3b989339de478e85b614d274d1ef",
+    "class_name": "거너(남)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "어썰트",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "엘레멘탈마스터",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "소환사",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "배틀메이지",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "마도학자",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "인챈트리스",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "3909d0b188e9c95311399f776e331da5",
+    "class_name": "마법사(여)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "인챈트리스",
+    "is_buffer": true
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "f6a4ad30555b99b499c07835f87ce522",
+    "class_name": "프리스트(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "크루세이더",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "f6a4ad30555b99b499c07835f87ce522",
+    "class_name": "프리스트(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "크루세이더",
+    "is_buffer": true
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "f6a4ad30555b99b499c07835f87ce522",
+    "class_name": "프리스트(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "인파이터",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "f6a4ad30555b99b499c07835f87ce522",
+    "class_name": "프리스트(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "퇴마사",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "f6a4ad30555b99b499c07835f87ce522",
+    "class_name": "프리스트(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "어벤저",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "944b9aab492c15a8474f96947ceeb9e4",
+    "class_name": "거너(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "레인저",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "944b9aab492c15a8474f96947ceeb9e4",
+    "class_name": "거너(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "런처",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "944b9aab492c15a8474f96947ceeb9e4",
+    "class_name": "거너(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "메카닉",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "944b9aab492c15a8474f96947ceeb9e4",
+    "class_name": "거너(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "스핏파이어",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "ddc49e9ad1ff72a00b53c6cff5b1e920",
+    "class_name": "도적",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "로그",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "ddc49e9ad1ff72a00b53c6cff5b1e920",
+    "class_name": "도적",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "사령술사",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "ddc49e9ad1ff72a00b53c6cff5b1e920",
+    "class_name": "도적",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "쿠노이치",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "ddc49e9ad1ff72a00b53c6cff5b1e920",
+    "class_name": "도적",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "섀도우댄서",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "ca0f0e0e9e1d55b5f9955b03d9dd213c",
+    "class_name": "격투가(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "넨마스터",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "ca0f0e0e9e1d55b5f9955b03d9dd213c",
+    "class_name": "격투가(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "스트라이커",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "ca0f0e0e9e1d55b5f9955b03d9dd213c",
+    "class_name": "격투가(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "스트리트파이터",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "ca0f0e0e9e1d55b5f9955b03d9dd213c",
+    "class_name": "격투가(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "그래플러",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "엘레멘탈 바머",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "빙결사",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "블러드 메이지",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "스위프트 마스터",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "a5ccbaf5538981c6ef99b236c0a60b73",
+    "class_name": "마법사(남)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "디멘션워커",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "17e417b31686389eebff6d754c3401ea",
+    "class_name": "다크나이트",
+    "adv_id": "4fdee159d5aa8874a1459861ced676ec",
+    "adv_name": "자각1",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "b522a95d819a5559b775deb9a490e49a",
+    "class_name": "크리에이터",
+    "adv_id": "4fdee159d5aa8874a1459861ced676ec",
+    "adv_name": "자각1",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "소드마스터",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "다크템플러",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "데몬슬레이어",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "베가본드",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "1645c45aabb008c98406b3a16447040d",
+    "class_name": "귀검사(여)",
+    "adv_id": "a59ba19824dc3292b6075e29b3862ad3",
+    "adv_name": "블레이드",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "0ee8fa5dc525c1a1f23fc6911e921e4a",
+    "class_name": "나이트",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "엘븐나이트",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "0ee8fa5dc525c1a1f23fc6911e921e4a",
+    "class_name": "나이트",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "카오스",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "0ee8fa5dc525c1a1f23fc6911e921e4a",
+    "class_name": "나이트",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "팔라딘",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "0ee8fa5dc525c1a1f23fc6911e921e4a",
+    "class_name": "나이트",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "드래곤나이트",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "3deb7be5f01953ac8b1ecaa1e25e0420",
+    "class_name": "마창사",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "뱅가드",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "3deb7be5f01953ac8b1ecaa1e25e0420",
+    "class_name": "마창사",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "듀얼리스트",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "3deb7be5f01953ac8b1ecaa1e25e0420",
+    "class_name": "마창사",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "드래고니안 랜서",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "3deb7be5f01953ac8b1ecaa1e25e0420",
+    "class_name": "마창사",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "다크 랜서",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "0c1b401bb09241570d364420b3ba3fd7",
+    "class_name": "프리스트(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "크루세이더",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "0c1b401bb09241570d364420b3ba3fd7",
+    "class_name": "프리스트(여)",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "크루세이더",
+    "is_buffer": true
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "0c1b401bb09241570d364420b3ba3fd7",
+    "class_name": "프리스트(여)",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "이단심판관",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "0c1b401bb09241570d364420b3ba3fd7",
+    "class_name": "프리스트(여)",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "무녀",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "0c1b401bb09241570d364420b3ba3fd7",
+    "class_name": "프리스트(여)",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "미스트리스",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "986c2b3d72ee0e4a0b7fcfbe786d4e02",
+    "class_name": "총검사",
+    "adv_id": "df3870efe8e8754011cd12fa03cd275f",
+    "adv_name": "히트맨",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "986c2b3d72ee0e4a0b7fcfbe786d4e02",
+    "class_name": "총검사",
+    "adv_id": "1ea78ae210f681a799feb4403a5c1e85",
+    "adv_name": "요원",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "986c2b3d72ee0e4a0b7fcfbe786d4e02",
+    "class_name": "총검사",
+    "adv_id": "a9a4ef4552d46e39cf6c874a51126410",
+    "adv_name": "트러블 슈터",
+    "is_buffer": false
+  },
+  {
+    "is_pure_adv": true,
+    "class_id": "986c2b3d72ee0e4a0b7fcfbe786d4e02",
+    "class_name": "총검사",
+    "adv_id": "4a1459a4fa3c7f59b6da2e43382ed0b9",
+    "adv_name": "스페셜리스트",
+    "is_buffer": false
+  }
+]

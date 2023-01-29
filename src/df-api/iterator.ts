@@ -5,6 +5,7 @@ import * as path from "path"
 type Option = {
     class_only?: boolean
     adv_only?: boolean
+    distinguish_buffer?:boolean
     awk_only?: boolean
     include_json?: boolean
 }
@@ -17,6 +18,7 @@ type AdvancementEntry = ClassEntry & {
     adv_id: string
     adv_name: string
     is_pure_adv?:boolean
+    is_buffer?:boolean
 }
 type AwakeningEntry = AdvancementEntry & {
     awk_id:string
@@ -54,11 +56,22 @@ export function * jobsDataGenerator(option?:Option):Generator<ClassEntry|Advance
                 adv_id,
                 adv_name,
             }
-            
+
             if(option != undefined && option.include_json) Object.assign(adv_output, { adv, awk_tree })
 
-            if(is_no_filter || option.adv_only)
-                yield Object.assign({ is_pure_adv: true }, adv_output )
+            if(is_no_filter || option.adv_only) {
+                if(option != undefined && option.distinguish_buffer) {
+                    adv_output.is_buffer = false
+                    yield Object.assign({ is_pure_adv: true }, adv_output )
+                    if(["프리스트(남)", "프리스트(여)", "마법사(여)"].includes(class_name) && ["크루세이더", "인챈트리스"].includes(adv_name)) {
+                        adv_output.is_buffer = true
+                        yield Object.assign({ is_pure_adv: true }, adv_output )
+                    }
+                }
+                else {
+                    yield Object.assign({ is_pure_adv: true }, adv_output )
+                }
+            }
 
             let awk_node = awk_tree
             while(awk_node != undefined) {

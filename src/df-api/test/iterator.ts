@@ -10,6 +10,7 @@ function main() {
         { name: "all", gen: jobsDataGenerator() },
         { name: "class", gen: classGenerator() },
         { name: "adv", gen: advGenerator() },
+        { name: "adv-distinguish", gen: jobsDataGenerator({ adv_only: true, distinguish_buffer: true }) },
         { name: "awk", gen: awkGenerator() },
     ]
 
