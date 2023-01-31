@@ -26,7 +26,7 @@ module.exports = {
     ]
   },
   node: {
-    __dirname: false
+    __dirname: true
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
