@@ -2,19 +2,16 @@
 import { describe } from "yargs"
 
 // My libs
-import { prompt } from "./prompt"
+import { prompt, PromptResult } from "./prompt"
 
 class Main {
-    async parseArgs() {
-    }
-
+    prompt_result:PromptResult
     async start() {
-        this.parseArgs()
+        this.prompt_result = await prompt()
     }
 }
 
 async function main() {
-    // await new Main().start()
-    console.log(await prompt())
+    await new Main().start()
 }
 main()

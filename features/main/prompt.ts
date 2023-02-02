@@ -3,16 +3,16 @@ import inquirer from "inquirer"
 import { classGenerator, awkGenerator, advGenerator } from "~/src/df-api"
 
 export type Task = "stat" | "ranking" | "total"
-export type Prompt = {
+export type PromptResult = {
     task: Task
     class: "all" | string
     adv?: string
     is_buffer?: boolean
 }
 
-export async function prompt():Promise<Prompt> {
+export async function prompt():Promise<PromptResult> {
     const class_names = Array.from(classGenerator()).map((entry) => entry.class_name)
-    const result:Prompt = await inquirer.prompt([
+    const result:PromptResult = await inquirer.prompt([
         {
             name: "task",
             message: "기능 선택",
