@@ -6,7 +6,7 @@ type Progress = {
     first_zero_power:number
 }
 
-export abstract class GetLastPageBase<Response> {
+export abstract class GetLastPageBase {
     abstract getEntryCount(page:number): Promise<number>
 
     async _getLastPage(start_page:number=1):Promise<any> {

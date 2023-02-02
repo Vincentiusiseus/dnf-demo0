@@ -59,7 +59,7 @@ export async function getLastPage(payload:Payload):Promise<number> {
     return output.start_page
 }
 
-class MyGetLastPage extends GetLastPageBase<any> {
+class MyGetLastPage extends GetLastPageBase {
     constructor(public payload:Payload) {
         super()
     }
