@@ -40,4 +40,13 @@ async function main() {
         else throw e
     }
 }
-main()
+// main()
+
+async function main1() {
+    const api_key = fs.readFileSync("./cred/api.txt", "utf-8").trim()
+    const inst = new DfApi(api_key)
+    const response = await inst.getCharacterInfo("anton", "a2020b9a7d048b6b07f6cd86fce5a5c4")
+    
+    console.log(response)
+}
+main1()
