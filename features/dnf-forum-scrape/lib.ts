@@ -7,6 +7,10 @@ import _axios, { AxiosResponse } from "axios"
 import { JSDOM } from "jsdom"
 import iconv from "iconv-lite"
 
+// My libs
+import { GetLastPageBase } from "~/src/get-last-page"
+
+
 const axios = _axios.create({
     httpsAgent: new https.Agent({
         keepAlive: true,
@@ -117,3 +121,17 @@ export async function getLastPage():Promise<number> {
     }
     return output.start_page
 }
+
+class MyGetLastPage extends GetLastPageBase {
+    async getEntryCount(page: number): Promise<number> {
+        const data = await getPageData(page)
+        return data.length
+    }
+}
+
+async function main() {
+    const inst = new MyGetLastPage()
+    console.log(await inst.start())
+    console.log("던파게시판")
+}
+// main()
