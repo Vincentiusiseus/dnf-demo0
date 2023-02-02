@@ -1,6 +1,7 @@
 // My libs
 import { makeRequest } from "./load-page"
 import { scrapeCharData } from "./scrape"
+import { GetLastPageBase } from "~/src/get-last-page"
 
 // My types
 import type { Payload } from "./load-page"
@@ -58,6 +59,19 @@ export async function getLastPage(payload:Payload):Promise<number> {
     return output.start_page
 }
 
+class MyGetLastPage extends GetLastPageBase<any> {
+    constructor(public payload:Payload) {
+        super()
+    }
+
+    async getEntryCount(page: number): Promise<number> {
+        const response = await makeRequest(this.payload, page)
+        const html_content = response.data
+        const data = await scrapeCharData(html_content)
+        return data.length
+    }
+}
+
 async function main() {
     const payload:Payload = {
         gender: "M",
@@ -79,3 +93,19 @@ async function main() {
     console.log(await getPageData(payload, 1))
 }
 // main()
+
+async function main1() {
+    const payload:Payload = {
+        gender: "M",
+        isHoly: false,
+        jobGrowName: "검신",
+        jobName: "귀검사(남)"
+    }
+    
+    payload.jobName = "마법사(여)"
+    payload.jobGrowName = "헤카테"
+    payload.gender = "F"
+    const inst = new MyGetLastPage(payload)
+    console.log(await inst.start())
+}
+// main1()
