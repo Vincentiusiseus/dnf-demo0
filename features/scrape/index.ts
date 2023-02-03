@@ -14,7 +14,7 @@ class Main {
 
         const is_all = target.length == 0 || target.includes("all")
 
-        console.log({ result, is_all })
+        // console.log({ result, is_all })
 
         const option:Option = { is_skip_page_count, is_iterate_all_advs }
 

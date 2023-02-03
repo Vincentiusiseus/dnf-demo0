@@ -17,7 +17,7 @@ export async function promptAdv():Promise<AdvPromptResult> {
             name: "class",
             message: "캐릭터 선택",
             type: "list",
-            choices: [...classes, "all"]
+            choices: [...classes, { name: "all", value: { class_name: "all" } }]
         },
     ])
 
