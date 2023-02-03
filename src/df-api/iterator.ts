@@ -2,15 +2,17 @@
 import * as fs from "fs"
 import * as path from "path"
 
+type IncludeJsonOption = {
+    include_json?: boolean
+}
 type AdvOption = {
     distinguish_buffer?:boolean
-}
-type Option = AdvOption & {
+} & IncludeJsonOption
+export type Option = {
     class_only?: boolean
     adv_only?: boolean
     awk_only?: boolean
-    include_json?: boolean
-}
+} & AdvOption
 type ClassEntry = {
     class_id:string
     class_name:string
@@ -96,8 +98,8 @@ export function * jobsDataGenerator(option?:Option):Generator<ClassEntry|Advance
     }
 }
 
-export function * classGenerator() {
-    yield* jobsDataGenerator({ class_only: true })
+export function * classGenerator(option?:IncludeJsonOption) {
+    yield* jobsDataGenerator(Object.assign({ class_only: true }, option))
 }
 
 export function * advGenerator(option?:AdvOption):Generator<AdvancementEntry> {
