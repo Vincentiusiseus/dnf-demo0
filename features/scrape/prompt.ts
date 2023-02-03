@@ -1,8 +1,10 @@
 import inquirer from "inquirer"
 
+
 type PromptResult = {
     target: Array<"df-board" | "dunfaoff" | "dundam" | "all">
-    skip_page_count: boolean
+    is_skip_page_count: boolean
+    is_iterate_all_advs: boolean
 }
 
 export async function prompt() {
@@ -25,11 +27,26 @@ export async function prompt() {
             // default: ["all"]
         },
         {
-            name: "skip_page_count",
+            name: "is_skip_page_count",
             message: "총 페이지 세기 스킵? (기본: 스킵 안함)",
             type: "confirm",
             default: false
         }
     ])
+
+    //@ts-ignore
+    if(["all", "dunfaoff", "dundam"].some(target => result.target.includes(target))) {
+        const prompt1_result = await inquirer.prompt([
+            {
+                name: "is_iterate_all_advs",
+                message: "직업군 선택 가능한 사이트가 존재합니다. 모든 직업군을 대상으로 스크레이핑 하겠습니까? (기본: 아니요)",
+                default: false,
+                type: "confirm"
+            }
+        ])
+
+        Object.assign(result, prompt1_result)
+    }
+
     return result
 }
