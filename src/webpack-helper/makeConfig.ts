@@ -3,15 +3,19 @@ const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 
 import type { Configuration } from "webpack"
 
-const PROJECT_ROOT = path.join(__dirname, "..")
+const PROJECT_ROOT = path.join(__dirname, "../..")
 
-export function makeConfig(dir_name:string) {
+export function makeConfig(dir_name:string, file_name:string) {
+  if(file_name == undefined) {
+    file_name = "index.ts"
+  }
+
   return <Configuration> {
     mode: "development",
     target: "node",
     devtool: 'inline-source-map',
     entry: {
-      main: path.join(dir_name, "index.ts")
+      main: path.join(dir_name, file_name)
     },
     module: {
       rules: [

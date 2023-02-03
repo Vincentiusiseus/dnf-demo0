@@ -6,8 +6,9 @@ import webpack from "webpack"
 // My libs
 import { makeConfig } from "./makeConfig"
 
-export function packAndRun(dir_name:string) {
-    const config = makeConfig(dir_name)
+export function packAndRun(dir_name:string, file_name:string) {
+    const config = makeConfig(dir_name, file_name)
+    
     webpack(
         config,
         (err, stats) => {
@@ -28,7 +29,8 @@ export function packAndRun(dir_name:string) {
 
 function main() {
     const target = process.argv[2]
+    const file_name = process.argv[3]
     const dir_name = path.join(__dirname, "../..", target)
-    packAndRun(dir_name)
+    packAndRun(dir_name, file_name)
 }
 main()
