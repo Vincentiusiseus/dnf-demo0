@@ -2,6 +2,9 @@
 import * as fs from "fs"
 import * as path from "path"
 
+// My libs
+import { BUFFER_ADV_NAMES, BUFFER_CLASS_NAMES, NO_ADVANCEMENT_CLASS_NAMES } from "./constants"
+
 type IncludeJsonOption = {
     include_json?: boolean
 }
@@ -13,25 +16,22 @@ export type Option = {
     adv_only?: boolean
     awk_only?: boolean
 } & AdvOption
-type ClassEntry = {
+export type ClassEntry = {
     class_id:string
     class_name:string
     is_pure_class?:boolean
 }
-type AdvancementEntry = ClassEntry & {
+export type AdvancementEntry = ClassEntry & {
     adv_id: string
     adv_name: string
     is_pure_adv?:boolean
     is_buffer?:boolean
 }
-type AwakeningEntry = AdvancementEntry & {
+export type AwakeningEntry = AdvancementEntry & {
     awk_id:string
     awk_name:string
     is_pure_awk?:boolean
 }
-
-export const BUFFER_ADV_NAMES = ["크루세이더", "인챈트리스"]
-export const BUFFER_CLASS_NAMES = ["프리스트(남)", "프리스트(여)", "마법사(여)"]
 
 export function * jobsDataGenerator(option?:Option):Generator<ClassEntry|AdvancementEntry|AwakeningEntry> {
     const raw_content = fs.readFileSync(path.join(__dirname, "./data/jobs-res.json"), "utf-8")
@@ -102,14 +102,14 @@ export function * jobsDataGenerator(option?:Option):Generator<ClassEntry|Advance
 }
 
 export function * classGenerator(option?:IncludeJsonOption) {
-    yield* jobsDataGenerator(Object.assign({ class_only: true }, option))
+    yield* <Generator<ClassEntry>> jobsDataGenerator(Object.assign({ class_only: true }, option))
 }
 
 export function * advGenerator(option?:AdvOption):Generator<AdvancementEntry> {
     //@ts-ignore
-    yield* jobsDataGenerator(Object.assign({ adv_only: true }, option))
+    yield* <Generator<AdvancementEntry>> jobsDataGenerator(Object.assign({ adv_only: true }, option))
 }
 
 export function * awkGenerator() {
-    yield* jobsDataGenerator({ awk_only: true })
+    yield* <Generator<AwakeningEntry>> jobsDataGenerator({ awk_only: true })
 }
