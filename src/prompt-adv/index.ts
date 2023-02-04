@@ -2,16 +2,19 @@
 import inquirer from "inquirer"
 
 // My libs
-import { classGenerator, advGenerator, Option } from "~/src/df-api"
+import { classGenerator, advGenerator, NO_ADVANCEMENT_CLASS_NAMES, BUFFER_CLASS_NAMES } from "~/src/df-api"
+// My types
+import type { ClassEntry, AdvancementEntry } from "~/src/df-api"
 
 export type AdvPromptResult = {
-    class: "all" | any
-    adv?: any
+    is_all?: boolean
+    class?: ClassEntry
+    adv?: AdvancementEntry
     is_buffer?: boolean
 }
 
 export async function promptAdv():Promise<AdvPromptResult> {
-    const classes = Array.from(classGenerator({ include_json: true })).map((entry) => ({ name: entry.class_name, value: entry }))
+    const classes = Array.from(classGenerator()).map((entry) => ({ name: entry.class_name, value: entry }))
     const result:AdvPromptResult = await inquirer.prompt([
         {
             name: "class",
@@ -23,13 +26,19 @@ export async function promptAdv():Promise<AdvPromptResult> {
 
     const class_name = result.class.class_name
 
-    if(["all", "다크나이트", "크리에이터"].includes(class_name)) {
+    if(["all"].includes(class_name)) {
+        const result:AdvPromptResult = { is_all: true }
         return result
     }
 
-    const advs = Array.from(advGenerator({ include_json: true }))
+    const advs = Array.from(advGenerator())
         .filter(entry => entry.class_name == class_name)
         .map(entry => ({ name: entry.adv_name, value: entry }))
+
+    if(NO_ADVANCEMENT_CLASS_NAMES.includes(class_name)) {
+        result.adv = advs[0].value
+        return result
+    }
 
     const adv_prompt = await inquirer.prompt([
         {
@@ -43,7 +52,7 @@ export async function promptAdv():Promise<AdvPromptResult> {
 
     const adv_name = adv_prompt.adv.adv_name
 
-    if(["크루세이더", "인챈트리스"].includes(adv_name)) {
+    if(BUFFER_CLASS_NAMES.includes(adv_name)) {
         const is_buffer_prompt = await inquirer.prompt([
             {
                 name: "is_buffer",
