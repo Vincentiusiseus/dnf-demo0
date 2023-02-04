@@ -1,9 +1,8 @@
 // NPM libs
 import inquirer from "inquirer"
 // My libs
-import { Option } from "../../lib"
+import { Option, convertToDundamArgs } from "../../lib"
 import { promptAdv } from "~/src/prompt-adv"
-import { convertToDundamArgs } from "./lib"
 import { advGenerator } from "~/src/df-api/iterator"
 
 class Main {
@@ -16,13 +15,7 @@ class Main {
     async scrapeAll() {
         const gen = advGenerator({ distinguish_buffer: true })
         for(const adv of gen) {
-            let class_name = adv.class_name 
-            let neo_awk_name = adv.adv_name
-            if(["다크나이트", "크리에이터"].includes(class_name)) {
-                neo_awk_name = class_name
-                class_name = "외전"
-            }
-            neo_awk_name = "眞 " + neo_awk_name
+            const { class_name, neo_awk_name } = convertToDundamArgs(adv)
             const is_buffer = adv.is_buffer
             this._scrapeAdv(class_name, neo_awk_name, is_buffer)
         }
@@ -35,12 +28,12 @@ class Main {
         else {
             while(true) {
                 const prompt_result = await promptAdv()
-                if(prompt_result.class.class_name == "all") {
+                if(prompt_result.is_all) {
                     await this.scrapeAll()
                     break
                 }
 
-                const args = convertToDundamArgs(prompt_result)
+                const args = convertToDundamArgs(prompt_result.adv)
                 await this._scrapeAdv(args.class_name, args.neo_awk_name, prompt_result.is_buffer)
 
                 const continue_result = await inquirer.prompt([

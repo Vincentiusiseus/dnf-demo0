@@ -1,10 +1,9 @@
 // NPM libs
 import inquirer from "inquirer"
 // My libs
-import { Option } from "../../lib"
+import { Option, convertToDunfaoffPayload } from "../../lib"
 import { promptAdv } from "~/src/prompt-adv"
 import { advGenerator } from "~/src/df-api/iterator"
-import { convertToDunfaoffPayload, BUFFER_ADV_NAMES, GENDER_MAP } from "./lib"
 
 // My types
 import type { Payload } from "~/features/dunfaoff-scrape/load-page"
@@ -19,14 +18,7 @@ class Main {
     async scrapeAll() {
         const gen = advGenerator({ distinguish_buffer: true })
         for(const adv of gen) {
-            const char_name = adv.class_name
-            const gender_chars  = char_name.substring(char_name.length - 3)
-            const payload:Payload = {
-                jobName: char_name,
-                jobGrowName: ["다크나이트", "크리에이터"].includes(char_name) ? char_name : adv.adv_name,
-                gender: gender_chars in GENDER_MAP ? GENDER_MAP[gender_chars] : "",
-                isHoly: adv.is_buffer,
-            }
+            const payload:Payload = convertToDunfaoffPayload(adv)
             await this._scrapeAdv(payload)
         }
     }
@@ -38,12 +30,12 @@ class Main {
         else {
             while(true) {
                 const prompt_result = await promptAdv()
-                if(prompt_result.class.class_name == "all") {
+                if(prompt_result.is_all) {
                     await this.scrapeAll()
                     break
                 }
 
-                const payload = convertToDunfaoffPayload(prompt_result)
+                const payload = convertToDunfaoffPayload(prompt_result.adv)
                 await this._scrapeAdv(payload)
 
                 const continue_result = await inquirer.prompt([
