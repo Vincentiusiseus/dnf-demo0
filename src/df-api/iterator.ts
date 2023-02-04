@@ -30,6 +30,9 @@ type AwakeningEntry = AdvancementEntry & {
     is_pure_awk?:boolean
 }
 
+export const BUFFER_ADV_NAMES = ["크루세이더", "인챈트리스"]
+export const BUFFER_CLASS_NAMES = ["프리스트(남)", "프리스트(여)", "마법사(여)"]
+
 export function * jobsDataGenerator(option?:Option):Generator<ClassEntry|AdvancementEntry|AwakeningEntry> {
     const raw_content = fs.readFileSync(path.join(__dirname, "./data/jobs-res.json"), "utf-8")
     const res_data = JSON.parse(raw_content)
@@ -67,7 +70,7 @@ export function * jobsDataGenerator(option?:Option):Generator<ClassEntry|Advance
                 if(option != undefined && option.distinguish_buffer) {
                     adv_output.is_buffer = false
                     yield Object.assign({ is_pure_adv: true }, adv_output )
-                    if(["프리스트(남)", "프리스트(여)", "마법사(여)"].includes(class_name) && ["크루세이더", "인챈트리스"].includes(adv_name)) {
+                    if(BUFFER_CLASS_NAMES.includes(class_name) && BUFFER_ADV_NAMES.includes(adv_name)) {
                         adv_output.is_buffer = true
                         yield Object.assign({ is_pure_adv: true }, adv_output )
                     }
