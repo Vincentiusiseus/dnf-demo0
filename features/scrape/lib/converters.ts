@@ -13,14 +13,32 @@ export type Option = {
 const GENDER_MAP:any = { "(남)": "M", "(여)": "F" }
 
 export function convertToDunfaoffPayload(adv_entry:AdvancementEntry) {
-    const char_name = adv_entry.class_name
-    const awk = NO_ADVANCEMENT_CLASS_NAMES.includes(char_name) ? char_name : adv_entry.adv_name
-    const gender_chars  = char_name.substring(char_name.length - 3)
+    let class_name = adv_entry.class_name
+    let awk:string
+    if(NO_ADVANCEMENT_CLASS_NAMES.includes(class_name)) {
+        awk = class_name
+    }
+    else {
+        const adv_name = adv_entry.adv_name
+        const adv_data = getAdvJson(adv_name)
+
+        let awk_node = adv_data.next
+        while(awk_node.next.next != undefined) {
+            awk_node = awk_node.next
+        }
+        awk = awk_node.jobGrowName
+    }
+
+    const gender_chars = class_name.substring(class_name.length - 3)
+    const gender = gender_chars in GENDER_MAP ? GENDER_MAP[gender_chars] : ""
+    if(gender != "") {
+        class_name = class_name.slice(0,-3)
+    }
     const payload = {
-        gender: gender_chars in GENDER_MAP ? GENDER_MAP[gender_chars] : "",
+        gender,
         isHoly: adv_entry.is_buffer,
         jobGrowName: awk,
-        jobName: char_name
+        jobName: class_name
     }
     return payload
 }

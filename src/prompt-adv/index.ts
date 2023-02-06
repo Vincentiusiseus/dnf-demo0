@@ -2,7 +2,7 @@
 import inquirer from "inquirer"
 
 // My libs
-import { classGenerator, advGenerator, NO_ADVANCEMENT_CLASS_NAMES, BUFFER_CLASS_NAMES } from "~/src/df-api"
+import { classGenerator, advGenerator, NO_ADVANCEMENT_CLASS_NAMES, BUFFER_ADV_NAMES } from "~/src/df-api"
 // My types
 import type { ClassEntry, AdvancementEntry } from "~/src/df-api"
 
@@ -52,7 +52,7 @@ export async function promptAdv():Promise<AdvPromptResult> {
 
     const adv_name = adv_prompt.adv.adv_name
 
-    if(BUFFER_CLASS_NAMES.includes(adv_name)) {
+    if(BUFFER_ADV_NAMES.includes(adv_name)) {
         const is_buffer_prompt = await inquirer.prompt([
             {
                 name: "is_buffer",
