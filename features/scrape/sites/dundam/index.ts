@@ -1,15 +1,32 @@
 // NPM libs
 import inquirer from "inquirer"
 // My libs
-import { Option, convertToDundamArgs } from "../../lib"
+import { Option, convertToDundamArgs, ScrapeAdv, Scraper } from "../../lib"
 import { promptAdv } from "~/src/prompt-adv"
 import { advGenerator } from "~/src/df-api/iterator"
+import { requestBufferData, requestDealerData } from "./lib"
 
-class Main {
+type Argument = {
+    class_name:string,
+    neo_awk_name:string,
+    is_buffer:boolean
+}
+
+class Main implements Scraper<Argument> {
     constructor(public option:Option) {}
 
+    async scrape(id: number, arg: Argument, page: number):Promise<any> {
+        let entries:any[] = []
+        if(arg.is_buffer) {
+            entries = await requestBufferData(page, arg.class_name)
+        }
+        else {
+            entries = await requestDealerData(page, arg.class_name, arg.neo_awk_name)
+        }
+    }
+
     async _scrapeAdv(class_name:string, neo_awk_name:string, is_buffer:boolean) {
-        console.log("scrape adv", class_name, neo_awk_name, is_buffer)
+        await new ScrapeAdv({ class_name, neo_awk_name, is_buffer }, this).start()
     }
 
     async scrapeAll() {
