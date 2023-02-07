@@ -91,11 +91,12 @@ export class JobsIterator {
 
                 if(option != undefined && option.distinguish_buffer == true) {
                     const class_name = class_entry.class_name
+                    adv_entry.is_buffer = undefined
                     if(BUFFER_CLASS_NAMES.includes(class_name) && BUFFER_ADV_NAMES.includes(adv_name)) {
                         adv_entry.is_buffer = true
-                        yield adv_entry
+                        yield Object.assign({}, adv_entry)
                         adv_entry.is_buffer = false
-                        yield adv_entry
+                        yield Object.assign({}, adv_entry)
                     }
                     else {
                         yield adv_entry
