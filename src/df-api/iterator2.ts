@@ -109,11 +109,3 @@ export class JobsIterator {
         }
     }
 }
-
-async function main() {
-    // const output = Array.from(new JobsIterator().classGenerator())
-    // const output = Array.from(new JobsIterator().advGenerator())
-    const output = Array.from(new JobsIterator().advGenerator({ include_awks: true, distinguish_buffer: true }))
-    console.dir(output, { depth: 10 })
-}
-main()
