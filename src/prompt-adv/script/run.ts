@@ -1,4 +1,4 @@
-import { promptAdv } from "./index"
+import { promptAdv } from "../prompt"
 
 async function main() {
     console.log(await promptAdv())
